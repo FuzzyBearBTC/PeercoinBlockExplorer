@@ -36,16 +36,16 @@ function site_footer ()	{
 	//	The page_wrap div is opened in the last line of the site_header function.	
 		echo "	</div>\n";
 		echo "\n";
-		
-/*
 	echo "	<div id=\"donor_box\">\n";
 	echo "\n";
+	echo "<a href=\"http://donate.peercointalk.org\" target=\"_blank\">Donate </a>\n</br>\n";
+	echo "<a href=\"https://github.com/FuzzyBearBTC/PeercoinBlockExplorer\" target=\"_blank\">Github Source Code </a>\n";
 	
-#	echo "		BlockCrawler Script Created By Jake Paysnoe adapted by FuzzyBear - Donations: PF6tRLLc3zGB25eFcnse9St5Nw9eMQvjHs \n";
+	echo "		<script>  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');  ga('create', 'UA-46906643-2', 'peercointalk.org');  ga('send', 'pageview');</script>\n";
 
 	echo "	</div>\n";
 	echo "\n";
-*/		
+		
 	echo "</body>\n";
 	echo "</html>";
 	exit;
@@ -329,7 +329,7 @@ function site_footer ()	{
 	}
 	
 /******************************************************************************
-	This script is Copyright © 2013 Jake Paysnoe.
+	This script is Copyright ï¿½ 2013 Jake Paysnoe.
 	I hereby release this script into the public domain.
 	Jake Paysnoe Jun 26, 2013
 ******************************************************************************/
