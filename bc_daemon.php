@@ -5,10 +5,10 @@
 ******************************************************************************/
 	$GLOBALS["wallet_ip"] = "127.0.0.1";
 	$GLOBALS["wallet_port"] = "9902";
-	$GLOBALS["wallet_user"] = 'USERNAME';
-	$GLOBALS["wallet_pass"] = 'PASSWORD';
+	$GLOBALS["wallet_user"] = "USERNAME";
+	$GLOBALS["wallet_pass"] = "PASSWORD";
 
-$coin_name = 'Peercoin';
+	$coin_name = "Peercoin";
 
 /******************************************************************************
 
@@ -20,6 +20,13 @@ $coin_name = 'Peercoin';
 
 ******************************************************************************/
 
+	/**
+	* Get block data with the provided hash
+	*
+	* @param	string	$block_hash
+	*
+	* @return	array
+	*/
 	function getblock ($block_hash)	{
 	//	The JSON-RPC request starts with a method name
 		$request_array["method"] = "getblock";
@@ -35,6 +42,14 @@ $coin_name = 'Peercoin';
 		return ($info);
 	}
 	
+
+	/**
+	* Get the block hash value for the provided index (height)
+	*
+	* @param	int		$block_index
+	*
+	* @return	string
+	*/
 	function getblockhash ($block_index)
 	{
 	//	The JSON-RPC request starts with a method name
@@ -51,6 +66,14 @@ $coin_name = 'Peercoin';
 		return ($info);
 	}
 	
+
+	/**
+	* Get info about the wallet and block chain
+	*
+	* Such as wallet balance, network difficulty, block count
+	*
+	* @return	array
+	*/
 	function getinfo () 
 	{
 	//	The JSON-RPC request starts with a method name
@@ -66,6 +89,14 @@ $coin_name = 'Peercoin';
 		return ($info);
 	}
 	
+
+	/**
+	* Get the network hash rate value (per second)
+	*
+	* @param	int		$block_index	[Optional] Block height/index
+	*
+	* @return	string
+	*/
 	function getnetworkhashps ($block_index=NULL)
 	{
 	//	The JSON-RPC request starts with a method name
@@ -88,6 +119,21 @@ $coin_name = 'Peercoin';
 		return ($info);
 	}
 	
+
+	/**
+	* Get raw transaction data for the provided TxID value
+	*
+	* If verbose=0	: Returns serialized, hex-encoded data
+	*				  for transaction txid
+	* If verbose!=0	: Returns JSON object of transaction info
+	*
+	* See: https://en.bitcoin.it/wiki/Raw_Transactions#getrawtransaction_.3Ctxid.3E_.5Bverbose.3D0.5D
+	*
+	* @param	string	$tx_id		Transaction ID
+	* @param	int		$verbose	[Optional] Values: 0 | 1
+	*
+	* @return	mixed
+	*/
 	function getrawtransaction ($tx_id, $verbose=1)
 	{
 	//	The JSON-RPC request starts with a method name
@@ -109,7 +155,7 @@ $coin_name = 'Peercoin';
 
 	JSON-RPC Fetch
 	
-	This function is used to request information form the daemon.
+	This function is used to request information from the daemon.
 
 ******************************************************************************/
 
