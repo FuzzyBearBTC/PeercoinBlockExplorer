@@ -38,20 +38,20 @@
 		$network_info = getinfo ();
 		
 		echo "		<div class=\"node_detail\">\n";
-		echo "			<span class=\"node_desc\">Block Count:</span><br>\n";
-		echo "			".$network_info["blocks"]."\n";
+		echo "			<span class=\"node_desc\">Block Count</span><br>\n";
+		echo "			<span class=\"node_desc_value\">".$network_info["blocks"]."</span>\n";
 		echo "		</div>\n";
 		echo "\n";
 
 		echo "		<div class=\"node_detail\">\n";
-		echo "			<span class=\"node_desc\">Difficulty:</span><br>\n";
-		echo "			".$network_info["difficulty"]."\n";
+		echo "			<span class=\"node_desc\">Difficulty</span><br>\n";
+		echo "			<span class=\"node_desc_value\">".$network_info["difficulty"]."</span>\n";
 		echo "		</div>\n";
 		echo "\n";
 
 		echo "		<div class=\"node_detail\">\n";
-		echo "			<span class=\"node_desc\">Connections:</span><br>\n";
-		echo "			".$network_info["connections"]."\n";
+		echo "			<span class=\"node_desc\">Connections</span><br>\n";
+		echo "			<span class=\"node_desc_value\">".$network_info["connections"]."</span>\n";
 		echo "		</div>\n";
 		echo "\n";
 
@@ -70,6 +70,9 @@
 
 		echo "	<div id=\"site_menu\">\n";
 		echo "\n";
+
+		echo "		<p class=\"left\">Explore the Peercoin blockchain by looking for a Block Number (Index), Block Hash, or Transaction ID.</p>";
+		echo "		<br />";
 		
 		echo "		<div class=\"menu_item\">\n";
 		echo "			<form action=\"\" method=\"post\">\n";
@@ -82,7 +85,7 @@
 
 		echo "		<div class=\"menu_item\">\n";
 		echo "			<form action=\"".$_SERVER["PHP_SELF"]."\" method=\"post\">\n";
-		echo "				<label for=\"block_hash\" class=\"menu_desc\">Enter A Block Hash</label><br>\n";
+		echo "				<label for=\"block_hash\" class=\"menu_desc\">Enter a Block Hash</label><br>\n";
 		echo "				<input type=\"text\" name=\"block_hash\" id=\"block_hash\" size=\"40\">\n";
 		echo "				<input type=\"submit\" name=\"submit\" value=\"Jump To Block\">\n";
 		echo "			</form>\n";
@@ -91,7 +94,7 @@
 
 		echo "		<div class=\"menu_item\">\n";
 		echo "			<form action=\"".$_SERVER["PHP_SELF"]."\" method=\"post\">\n";
-		echo "				<label for=\"transaction\" class=\"menu_desc\">Enter A Transaction ID</label><br>\n";
+		echo "				<label for=\"transaction\" class=\"menu_desc\">Enter a Transaction ID</label><br>\n";
 		echo "				<input type=\"text\" name=\"transaction\" id=\"transaction\" size=\"40\">\n";
 		echo "				<input type=\"submit\" name=\"submit\" value=\"Jump To TX\">\n";
 		echo "			</form>\n";
@@ -103,9 +106,9 @@
 
 		echo "	</div>\n";
 		echo "\n";
-		echo "<div><a href=\"http://www.peercointalk.org\" target=\"_blank\">Brought to you by FuzzyBear and PeercoinTalk.org</a></div>\n";
+		echo "<div id=\"credits_box\"><a href=\"http://www.peercointalk.org\" target=\"_blank\">Brought to you by FuzzyBear and PeercoinTalk.org</a></div>\n";
 		echo "\n";
-		echo "<a href=\"http://peercoin.net\" target=\"_blank\"><img src=\"http://merchanttools.peercointalk.org/Logo/Logo.png\" alt=\"peercoin logo\"></img></a>";
+		echo "<a href=\"http://peercoin.net\" target=\"_blank\"><img id=\"peercoin_logo\" src=\"http://merchanttools.peercointalk.org/Logo/Logo.png\" alt=\"Peercoin Logo\" title=\"Peercoin Logo\"></img></a>";
 	}
 	
 	

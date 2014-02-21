@@ -3,6 +3,8 @@
 	padding:0px;
 	text-align:center;
 	font-family:sans-serif;
+	box-sizing:border-box;
+	-moz-box-sizing:border-box;
 	}
 	
 body {
@@ -10,32 +12,40 @@ body {
 	width:780px;
 	margin:0px auto;
 	}
-	
+
+#site_head, #donor_box, #page_wrap {
+	padding:0.5em;
+	border-radius:3px;
+	box-shadow:0 1px 2px rgba(0, 0, 0, 0.25);
+	}
+
 #site_head {
 	width:768px;
 	margin:10px auto;
-	background-color:#ffffff;
+	background:#ffffff;
 	}
 	
 #donor_box {
-	width:760px;
-	height:38px;
+	width:768px;
 	margin:2px auto;
 	font-size:.8em;
 	background-color:#ffffff;
 	}
 	
 #page_wrap {
-	width:760px;
+	width:768px;
 	background-color:#ffffff;
-	margin:5px auto;
+	margin:10px auto;
 	overflow:auto;
 	}
 	
 #node_info {
 	width:200px;
 	margin:10px;
-	border-style:solid;
+	background:#44812C;
+	border:1px solid rgba(0, 0, 0, 0.2);
+	border-radius:3px;
+	box-shadow:inset 0 0 3px rgba(0, 0, 0, 0.2);
 	float:left;
 	overflow:auto;
 	}
@@ -47,6 +57,13 @@ body {
 	
 .node_desc {
 	font-weight:bold;
+	color:rgba(0, 0, 0, 0.6);
+	font-size:1.1em;
+	}
+
+.node_desc_value {
+	color:rgba(255, 255, 255, 0.95);
+	font-size:1.2em;
 	}
 	
 #site_menu {
@@ -80,7 +97,7 @@ body {
 .blockbanner_left {
 	width:360px;
 	background-color:#ffffff;
-	margin: 5px;
+	margin:5px;
 	line-height:42px;
 	vertical-align:middle;
 	font-weight:bold;
@@ -90,7 +107,7 @@ body {
 .blockbanner_right {
 	width:360px;
 	background-color:#ffffff;
-	margin: 5px;
+	margin:5px;
 	line-height:42px;
 	vertical-align:middle;
 	font-weight:bold;
@@ -231,7 +248,28 @@ body {
 	vertical-align:middle;
 	float:right;
 	}
-	
+
+#credits_box {
+	font-size:0.8em;
+	}
+
+#peercoin_logo {
+	margin-top:0.5em;
+	}
+
+a {
+	color:#265314;
+	}
+
+p {
+	margin:0.75em 0;
+	line-height:1.35;
+	}
+
+.left {
+	text-align:left;
+	}
+
 input[type="text"] {
 	text-align:left;
 	border:1px solid rgba(0, 0, 0, 0.2);
