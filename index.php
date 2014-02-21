@@ -72,28 +72,28 @@
 		echo "\n";
 		
 		echo "		<div class=\"menu_item\">\n";
-		echo "			<span class=\"menu_desc\">Enter a Block Number</span><br>\n";
 		echo "			<form action=\"\" method=\"post\">\n";
-		echo "				<input type=\"text\" name=\"block_height\" size=\"40\">\n";
+		echo "				<label for=\"block_height\" class=\"menu_desc\">Enter a Block Number</label><br>\n";
+		echo "				<input type=\"text\" name=\"block_height\" id=\"block_height\" size=\"40\">\n";
 		echo "				<input type=\"submit\" name=\"submit\" value=\"Jump To Block\">\n";
 		echo "			</form>\n";
 		echo "		</div>\n";
 		echo "\n";
 
 		echo "		<div class=\"menu_item\">\n";
-		echo "			<span class=\"menu_desc\">Enter A Block Hash</span><br>\n";
 		echo "			<form action=\"".$_SERVER["PHP_SELF"]."\" method=\"post\">\n";
-		echo "				<input type=\"text\" name=\"block_hash\" size=\"40\">\n";
+		echo "				<label for=\"block_hash\" class=\"menu_desc\">Enter A Block Hash</label><br>\n";
+		echo "				<input type=\"text\" name=\"block_hash\" id=\"block_hash\" size=\"40\">\n";
 		echo "				<input type=\"submit\" name=\"submit\" value=\"Jump To Block\">\n";
 		echo "			</form>\n";
 		echo "		</div>\n";
 		echo "\n";
 
 		echo "		<div class=\"menu_item\">\n";
-		echo "			<span class=\"menu_desc\">Enter A Transaction ID</span><br>\n";
 		echo "			<form action=\"".$_SERVER["PHP_SELF"]."\" method=\"post\">\n";
-		echo "				<input type=\"text\" name=\"transaction\" size=\"40\">\n";
-		echo "					<input type=\"submit\" name=\"submit\" value=\"Jump To TX\">\n";
+		echo "				<label for=\"transaction\" class=\"menu_desc\">Enter A Transaction ID</label><br>\n";
+		echo "				<input type=\"text\" name=\"transaction\" id=\"transaction\" size=\"40\">\n";
+		echo "				<input type=\"submit\" name=\"submit\" value=\"Jump To TX\">\n";
 		echo "			</form>\n";
 		echo "		<div class=\"menu_item\">\n";
 		echo "			<span class=\"menu_desc\">Find out more on Peercoin (PPC)</span><br>\n";
