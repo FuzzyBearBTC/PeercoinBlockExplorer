@@ -97,22 +97,22 @@
 		echo "			</form>\n";
 		echo "		<div class=\"menu_item\">\n";
 		echo "			<span class=\"menu_desc\">Find out more on Peercoin (PPC)</span><br>\n";
-		echo "<a href=\"http://peercoin.net\">Visit Peercoin.net Official Peercoin Website</a> 		</div>\n";
-		echo "	<a href=\"http://www.peercointalk.org\">Official Peercoin Forum</a> 	</div>\n";
+		echo "<a href=\"http://peercoin.net\" target=\"_blank\">Visit Peercoin.net Official Peercoin Website</a> 		</div>\n";
+		echo "	<a href=\"http://www.peercointalk.org\" target=\"_blank\">Official Peercoin Forum</a> 	</div>\n";
 		echo "\n";
 
 		echo "	</div>\n";
 		echo "\n";
-		echo "<div><a href=\"http://www.peercointalk.org\">Brought to you by FuzzyBear and PeercoinTalk.org</a></div>\n";
+		echo "<div><a href=\"http://www.peercointalk.org\" target=\"_blank\">Brought to you by FuzzyBear and PeercoinTalk.org</a></div>\n";
 		echo "\n";
-		echo "<a href=\"http://peercoin.net\"><img src=\"http://merchanttools.peercointalk.org/Logo/Logo.png\" alt=\"peercoin logo\"></img></a>";
+		echo "<a href=\"http://peercoin.net\" target=\"_blank\"><img src=\"http://merchanttools.peercointalk.org/Logo/Logo.png\" alt=\"peercoin logo\"></img></a>";
 	}
 	
 	
 	site_footer ();
 
 /******************************************************************************
-	This script is Copyright © 2013 Jake Paysnoe.
+	This script is Copyright ï¿½ 2013 Jake Paysnoe.
 	I hereby release this script into the public domain.
 	Jake Paysnoe Jun 26, 2013
 ******************************************************************************/
