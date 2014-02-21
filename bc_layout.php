@@ -38,7 +38,7 @@ function site_footer ()	{
 		echo "\n";
 	echo "	<div id=\"donor_box\">\n";
 	echo "\n";
-	echo "<a href=\"http://donate.peercointalk.org\" target=\"_blank\">Donate </a>\n</br>\n";
+	echo "<a href=\"http://donate.peercointalk.org\" target=\"_blank\">Donate to Peercointalk projects</a> or <a href=\"http://peer4commit.com/projects/4\" target=\"_blank\"><img src=\"http://peer4commit.com/projects/4.svg\"></a>\n</br>\n";
 	echo "<a href=\"https://github.com/FuzzyBearBTC/PeercoinBlockExplorer\" target=\"_blank\">Github Source Code </a>\n";
 	
 	echo "		<script>  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');  ga('create', 'UA-46906643-2', 'peercointalk.org');  ga('send', 'pageview');</script>\n";
