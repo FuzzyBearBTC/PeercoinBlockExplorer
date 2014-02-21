@@ -18,11 +18,11 @@ body {
 	}
 	
 #donor_box {
-	width:768px;
-	height:10px;
+	width:760px;
+	height:32px;
 	margin:2px auto;
 	font-size:.8em;
-	color:#ffffff;
+	background-color:#ffffff;
 	}
 	
 #page_wrap {
