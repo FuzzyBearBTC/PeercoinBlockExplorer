@@ -232,3 +232,13 @@ body {
 	float:right;
 	}
 	
+input[type="text"] {
+	text-align:left;
+	border:1px solid rgba(0, 0, 0, 0.2);
+	padding:0.25em;
+	border-radius:2px;
+	}
+
+input[type="submit"] {
+	padding:0.25em;
+	}
