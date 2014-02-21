@@ -10,7 +10,8 @@ Currently search vis txid does not work on this block explorer but this is due t
 
 Requirements
 ------------
-php
-ppcoind
+php 5.2
+
+ppcoind 0.3
 
 This has been tested on Windows 2008 SP2 server with php 5.2
