@@ -270,13 +270,39 @@ p {
 	text-align:left;
 	}
 
+#donor_box a {
+	display: inline-block;
+	margin:0 0.5em;
+	}
+
 input[type="text"] {
 	text-align:left;
 	border:1px solid rgba(0, 0, 0, 0.2);
-	padding:0.25em;
+	padding:0.5em;
 	border-radius:2px;
 	}
 
-input[type="submit"] {
-	padding:0.25em;
+input[type="submit"], .pretty-button {
+	padding:0.5em 1em;
+	border:1px solid rgba(0, 0, 0, 0.2);
+	border-radius:2px;
+	background:#5B9943;
+	background:-webkit-linear-gradient(top, #5B9943, #44812C);
+	background:-moz-linear-gradient(top, #5B9943, #44812C);
+	background:-ms-linear-gradient(top, #5B9943, #44812C);
+	background:-o-linear-gradient(top, #5B9943, #44812C);
+	color:#ffffff;
+	font-weight:bold;
+	}
+
+input[type="submit"]:hover, .pretty-button:hover {
+	background:#67A54F;
+	background:-webkit-linear-gradient(top, #67A54F, #508D38);
+	background:-moz-linear-gradient(top, #67A54F, #508D38);
+	background:-ms-linear-gradient(top, #67A54F, #508D38);
+	background:-o-linear-gradient(top, #67A54F, #508D38);
+	}
+
+input[type="submit"]:active, .pretty-button:active {
+	box-shadow:inset 0 0 8px rgba(0, 0, 0, 0.2);
 	}
