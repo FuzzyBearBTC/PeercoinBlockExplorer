@@ -5,7 +5,7 @@ Peercoin Block Chain Viewer
 Version is running on http://blockexplorer.peercointalk.org/
 
 
-Currently search vis txid does not work on this block explorer but this is due to the api call being different from bitcoin for peercoin and should hopefully be fixed soon or feel free to have a look at the code and try yourself. Just send a pull request to this repo or contact Fuzzybear on http://www.peercointalk.org/
+Currently search via txid does not work on this block explorer but this is due to the api call being different from bitcoin for peercoin and should hopefully be fixed soon or feel free to have a look at the code and try yourself. Just send a pull request to this repo or contact Fuzzybear on http://www.peercointalk.org/
 
 
 Requirements
