@@ -1,332 +1,210 @@
 <?php
-#$coin_name = 'Peercoin';
-function site_header ($title, $auth_list="") {
-	echo "<!DOCTYPE html PUBLIC \"-//W3C//DTD HTML 4.01 Transitional//EN\" \"http://www.w3.org/TR/html4/loose.dtd\">\n\n";
-	echo "<head>\n\n";
-	echo "	<title>".$title."</title>\n\n";	
-	echo "	<link rel=\"stylesheet\" type=\"text/css\" href=\"css/bc.css\">\n\n";
-	echo "</head>\n";
-	echo "<body>\n";
-	echo "\n";
 
-	echo "	<div id=\"site_head\">\n";
-	echo "\n";
+/**
+* Output the site header HTML
+*
+* @param	string	$title	Page title
+*/
+function site_header ($title, $auth_list="")
+{
+	include('views/site_header.php');
+}
 
-	echo "		<div id=\"site_head_logo\">\n";
-	echo "\n";
 
-#		echo "	<h1><a href=\"".$_SERVER["PHP_SELF"]."\" title=\"Home Page\">\n";
-	echo "	<a href='./' title=\"Start Page\">\n";
-	echo "		<img src=\"imgs/PeercoinBlockExplorerHeader.png\"></img></a>\n";
-	#echo "			<h3><a href='' title=\"Start Page\">\n";
-	#echo "				Block Chain Viewer\n";
-	#echo "			</a></h3>\n";
-	echo "\n";
-
-	echo "		</div>\n";
-	echo "\n";
-	echo "	</div>\n";
-	echo "\n";
-		
-	echo "	<div id=\"page_wrap\">\n";
-	echo "\n";
-	}
-	
-function site_footer ()	{
-	//	The page_wrap div is opened in the last line of the site_header function.	
-		echo "	</div>\n";
-		echo "\n";
-	echo "	<div id=\"donor_box\">\n";
-	echo "\n";
-	echo "<a href=\"http://donate.peercointalk.org\" target=\"_blank\">Donate to Peercointalk projects</a> or <a href=\"http://peer4commit.com/projects/4\" target=\"_blank\"><img src=\"http://peer4commit.com/projects/4.svg\"></a>\n";
-	echo "<a href=\"https://github.com/FuzzyBearBTC/PeercoinBlockExplorer\" target=\"_blank\">GitHub Source Code </a>\n";
-	
-	echo "		<script>  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');  ga('create', 'UA-46906643-2', 'peercointalk.org');  ga('send', 'pageview');</script>\n";
-
-	echo "	</div>\n";
-	echo "\n";
-		
-	echo "</body>\n";
-	echo "</html>";
+/**
+* Output the site footer HTML
+*/
+function site_footer ()
+{
+	include('views/site_footer.php');
 	exit;
 }
-	
-	function block_detail($block_id, $hash=FALSE) {
-		if ($hash == TRUE) {
-			$raw_block = getblock ($block_id);
-		}
-		else {
-			$block_hash = getblockhash(intval ($block_id));
-			$raw_block = getblock($block_hash);
-#echo $raw_block;
-		}
 
-		#foreach($raw_block as $paramName => $value)
-		#{echo $paramName."=".$value."<br>" ;}
-		#echo '<option value="'.$i.'">'.$value.'</option>';
-		
-		echo "	<div class=\"block_banner\">\n";
-		echo "\n";
 
-		echo "		<div class=\"blockbanner_left\">\n";
-		echo "			Block Height: ".$raw_block["height"]."\n";
-		echo "		</div>\n";
-		echo "\n";
-
-		echo "		<div class=\"blockbanner_right\">\n";
-		echo "			Block Time: ".$raw_block["time"]."\n";
-		echo "		</div>\n";
-		echo "\n";
-
-		echo "	</div>\n";
-		echo "\n";
-		
-		echo "	<div class=\"blockdetail\">\n";
-		echo "\n";
-		
-		echo "		<div class=\"blockdetail_detail\">\n";
-		echo "			<div class=\"blockdetail_header\">Block Version</div>\n";		
-		echo "			<div class=\"blockdetail_content\">\n";
-		echo "				".$raw_block["flags"]."\n";
-		echo "			</div>\n";		
-		echo "		</div>\n";
-		echo "\n";
-		
-		echo "		<div class=\"blockdetail_detail\">\n";
-		echo "			<div class=\"blockdetail_header\">Block Size</div>\n";		
-		echo "			<div class=\"blockdetail_content\">\n";
-		echo "				".$raw_block["size"]."\n";
-		echo "			</div>\n";		
-		echo "		</div>\n";
-		echo "\n";
-		
-		echo "		<div class=\"blockdetail_detail\">\n";
-		echo "			<div class=\"blockdetail_header\">Mint Value</div>\n";		
-		echo "			<div class=\"blockdetail_content\">\n";
-		echo "				".$raw_block["mint"]."\n";
-		echo "			</div>\n";		
-		echo "		</div>\n";
-		echo "\n";
-		
-		echo "	</div>\n";
-		echo "\n";
-		
-		echo "	<div class=\"blockdetail\">\n";
-		echo "\n";
-		
-		echo "		<div class=\"blockdetail_detail\">\n";
-		echo "			<div class=\"blockdetail_header\">Block Bits</div>\n";		
-		echo "			<div class=\"blockdetail_content\">\n";
-		echo "				".$raw_block["bits"]."\n";
-		echo "			</div>\n";		
-		echo "		</div>\n";
-		echo "\n";
-		
-		echo "		<div class=\"blockdetail_detail\">\n";
-		echo "			<div class=\"blockdetail_header\">Block Nonce</div>\n";		
-		echo "			<div class=\"blockdetail_content\">\n";
-		echo "				".$raw_block["nonce"]."\n";
-		echo "			</div>\n";		
-		echo "		</div>\n";
-		echo "\n";
-		
-		echo "		<div class=\"blockdetail_detail\">\n";
-		echo "			<div class=\"blockdetail_header\">Block Difficulty</div>\n";		
-		echo "			<div class=\"blockdetail_content\">\n";
-		echo "				".$raw_block["difficulty"]."\n";
-		echo "			</div>\n";		
-		echo "		</div>\n";
-		echo "\n";
-		
-		echo "	</div>\n";
-		echo "\n";
-		
-		detail_display ("Merkle Root", $raw_block["merkleroot"]);
-		
-		detail_display ("Block Hash", blockhash_link ($raw_block["hash"]));
-		
-		echo "	<div class=\"blocknav\">\n";
-		echo "\n";
-		
-		echo "		<div class=\"blocknav_prev\">\n";
-		echo "			<a href='?block_hash=".$raw_block["previousblockhash"]."' title=\"View Previous Block\"><- Previous Block</a>\n";
-		echo "		</div>\n";
-		echo "\n";
-		
-		echo "		<div class=\"blocknav_news\">\n";
-#		echo "			Block Time: ".date ("F j, Y, g:i a", $raw_block["time"])."\n";
-		echo "			Block Time: ".$raw_block["time"]."\n";
-		echo "		</div>\n";
-		echo "\n";
-		
-		echo "		<div class=\"blocknav_next\">\n";
-		echo "			<a href=\"".$_SERVER["PHP_SELF"]."?block_hash=".$raw_block["nextblockhash"]."\" title=\"View Next Block\">Next Block -></a>\n";
-		echo "		</div>\n";
-		echo "\n";
-		
-		echo "	</div>\n";
-		echo "\n";
-
-		echo "	<div class=\"txlist_header\">\n";
-		echo "		Transactions In This Block\n";
-		echo "	</div>\n";
-		echo "\n";
-		
-		echo "	<div class=\"txlist_wrap\">\n";
-		
-		foreach ($raw_block["tx"] as $index => $tx) {
-#			echo "		<div class=\"txlist_showtx\" id=\"showtx_".$index."\">\n";
-			echo "		<div class=\"txlist_tx\" >\n";
-			echo "			<a href=\"?transaction=".$tx."\" title=\"Transaction Details\">\n";
-			echo "				".$tx."\n";
-			echo "			</a>\n";
-			echo "		</div>\n\n";
-		}
-
-		echo "	</div>\n";
-		echo "\n";
-
+/**
+* Output the block detail information HTML/PHP code
+*
+* @param	int		$block_id
+* @param	bool	$hash
+*/
+function block_detail($block_id, $hash=FALSE)
+{
+	if ($hash == TRUE) {
+		$raw_block = getblock ($block_id);
 	}
-	
-	function tx_detail ($tx_id) {
-		$raw_tx = getrawtransaction ($tx_id);
-
-		section_head ("Transaction: ".$raw_tx["txid"]);
-		
-		section_subhead ("Detailed Description");
-
-		detail_display ("TX Version", $raw_tx["version"]);
-		
-		detail_display ("TX Time", date ("F j, Y, H:i:s", $raw_tx["time"]));
-		
-		detail_display ("Lock Time", $raw_tx["locktime"]);
-		
-		detail_display ("Confirmations", $raw_tx["confirmations"]);
-		
-		detail_display ("Block Hash", blockhash_link ($raw_tx["blockhash"]));
-		
-	//	Florin Coin Feature
-		if (isset ($raw_tx["tx-comment"]) && $raw_tx["tx-comment"] != "")
-		{
-			detail_display ("TX Message", htmlspecialchars ($raw_tx["tx-comment"]));
-		}
-		
-		detail_display ("HEX Data", $raw_tx["hex"], 50);
-		
-		section_head ("Transaction Inputs");		
-		
-		foreach ($raw_tx["vin"] as $key => $txin)
-		{
-			section_subhead ("Input Transaction ".$key);
-
-			if (isset ($txin["coinbase"]))
-			{
-				detail_display ("Coinbase", $txin["coinbase"]);
-		
-				detail_display ("Sequence", $txin["sequence"]);
-			}
-			
-			else
-			{
-				detail_display ("TX ID", tx_link ($txin["txid"]));
-		
-				detail_display ("TX Output", $txin["vout"]);
-		
-				detail_display ("TX Sequence", $txin["sequence"]);
-		
-				detail_display ("Script Sig (ASM)", $txin["scriptSig"]["asm"], 50);
-		
-				detail_display ("Script Sig (HEX)", $txin["scriptSig"]["hex"], 50);
-			}
-		}
-		
-		section_head ("Transaction Outputs");
-		
-		foreach ($raw_tx["vout"] as $key => $txout)
-		{
-			section_subhead ("Output Transaction ".$key);
-		
-			detail_display ("TX Value", $txout["value"]);
-		
-			detail_display ("TX Type", $txout["scriptPubKey"]["type"]);
-		
-			detail_display ("Required Sigs", $txout["scriptPubKey"]["reqSigs"]);
-		
-			detail_display ("Script Pub Key (ASM)", $txout["scriptPubKey"]["asm"], 50);
-		
-			detail_display ("Script Pub Key (HEX)", $txout["scriptPubKey"]["hex"], 50);
-		
-			if (isset ($txout["scriptPubKey"]["addresses"]))
-			{
-				foreach ($txout["scriptPubKey"]["addresses"] as $key => $address);
-				{
-					detail_display ("Address ".$key, $address);
-				}
-			}
-			
- 		}
-		
-		section_head ("Raw Transaction Detail");
-		
-		echo "	<textarea name=\"rawtrans\" rows=\"25\" cols=\"80\" style=\"text-align:left;\">\n";
-		print_r ($raw_tx);
-		echo "	\n</textarea><br><br>\n";
+	else {
+		$block_hash = getblockhash(intval ($block_id));
+		$raw_block = getblock($block_hash);
 	}
 
-	function detail_display ($title, $data, $wordwrap=0)
+	include('views/block_detail.php');
+}
+
+
+/**
+* Output trasnaction details via HTML code
+*
+* @param	string	$tx_id
+*/	
+function tx_detail ($tx_id)
+{
+	$raw_tx = getrawtransaction ($tx_id);
+
+	section_head ("Transaction: ".$raw_tx["txid"]);
+	
+	section_subhead ("Detailed Description");
+
+	detail_display ("TX Version", $raw_tx["version"]);
+	
+	detail_display ("TX Time", date ("F j, Y, H:i:s", $raw_tx["time"]));
+	
+	detail_display ("Lock Time", $raw_tx["locktime"]);
+	
+	detail_display ("Confirmations", $raw_tx["confirmations"]);
+	
+	detail_display ("Block Hash", blockhash_link ($raw_tx["blockhash"]));
+	
+//	Florin Coin Feature
+	if (isset ($raw_tx["tx-comment"]) && $raw_tx["tx-comment"] != "")
 	{
-		echo "	<div class=\"detail_display\">\n";
-		
-		echo "		<div class=\"detail_title\">\n";
-		echo "			".$title."\n";
-		echo "		</div>\n";
+		detail_display ("TX Message", htmlspecialchars ($raw_tx["tx-comment"]));
+	}
+	
+	detail_display ("HEX Data", $raw_tx["hex"], 50);
+	
+	section_head ("Transaction Inputs");		
+	
+	foreach ($raw_tx["vin"] as $key => $txin)
+	{
+		section_subhead ("Input Transaction ".$key);
 
-		if ($wordwrap > 0)
+		if (isset ($txin["coinbase"]))
 		{
-			echo "		<div class=\"detail_data\">\n";
-			echo "			".wordwrap ($data, $wordwrap, "<br>", TRUE)."\n";
-			echo "		</div>\n";
+			detail_display ("Coinbase", $txin["coinbase"]);
+	
+			detail_display ("Sequence", $txin["sequence"]);
 		}
 		
 		else
 		{
-			echo "		<div class=\"detail_data\">\n";
-			echo "			".$data."\n";
-			echo "		</div>\n";
+			detail_display ("TX ID", tx_link ($txin["txid"]));
+	
+			detail_display ("TX Output", $txin["vout"]);
+	
+			detail_display ("TX Sequence", $txin["sequence"]);
+	
+			detail_display ("Script Sig (ASM)", $txin["scriptSig"]["asm"], 50);
+	
+			detail_display ("Script Sig (HEX)", $txin["scriptSig"]["hex"], 50);
 		}
-		
-		echo "	</div>\n";
-	}
-
-	function tx_link ($tx_id) {
-		return "<a href=\"?transaction=".$tx_id."\" title=\"View Transaction Details\">".$tx_id."</a>\n";
-	}
-
-	function blockheight_link ($block_height)
-	{
-		return "<a href=\"".$_SERVER["PHP_SELF"]."?block_height=".$block_height."\" title=\"View Block Details\">".$block_height."</a>\n";
-	}
-
-	function blockhash_link ($block_hash)
-	{
-		return "<a href=\"".$_SERVER["PHP_SELF"]."?block_hash=".$block_hash."\" title=\"View Block Details\">".$block_hash."</a>\n";
-	}
-
-	function section_head ($heading)
-	{
-		echo "		<div class=\"section_head\">\n";
-		echo "			".$heading."\n";
-		echo "		</div>\n";
-		echo "\n";
 	}
 	
-	function section_subhead ($heading)
+	section_head ("Transaction Outputs");
+	
+	foreach ($raw_tx["vout"] as $key => $txout)
 	{
-		echo "		<div class=\"section_subhead\">\n";
-		echo "			".$heading."\n";
-		echo "		</div>\n";
-		echo "\n";
-	}
+		section_subhead ("Output Transaction ".$key);
+	
+		detail_display ("TX Value", $txout["value"]);
+	
+		detail_display ("TX Type", $txout["scriptPubKey"]["type"]);
+	
+		detail_display ("Required Sigs", $txout["scriptPubKey"]["reqSigs"]);
+	
+		detail_display ("Script Pub Key (ASM)", $txout["scriptPubKey"]["asm"], 50);
+	
+		detail_display ("Script Pub Key (HEX)", $txout["scriptPubKey"]["hex"], 50);
+	
+		if (isset ($txout["scriptPubKey"]["addresses"]))
+		{
+			foreach ($txout["scriptPubKey"]["addresses"] as $key => $address);
+			{
+				detail_display ("Address ".$key, $address);
+			}
+		}
+		
+		}
+	
+	section_head ("Raw Transaction Detail");
+	
+	echo "	<textarea name=\"rawtrans\" rows=\"25\" cols=\"80\" style=\"text-align:left;\">\n";
+	print_r ($raw_tx);
+	echo "	\n</textarea><br><br>\n";
+}
+
+
+/**
+* Output a detail element on the page
+*
+* @param	string	$title		Title/name of detail
+* @param	string	$data		Detail data
+* @param	int		$wordwrap	Word-wrap maximum length
+*/
+function detail_display ($title, $data, $wordwrap=0)
+{
+	include('views/detail_display.php');
+}
+
+
+/**
+* Output a link to view a transaction ID
+*
+* @param	string	$tx_id
+*/
+function tx_link ($tx_id)
+{
+	return "<a href=\"?transaction=".$tx_id."\" title=\"View Transaction Details\">".$tx_id."</a>\n";
+}
+
+
+/**
+* Output a link to view a block with a certain height
+*
+* @param	int		$block_height
+*/
+function blockheight_link ($block_height)
+{
+	return "<a href=\"".$_SERVER["PHP_SELF"]."?block_height=".$block_height."\" title=\"View Block Details\">".$block_height."</a>\n";
+}
+
+
+/**
+* Output a link to view a block hash
+*
+* @param	int		$block_hash
+*/
+function blockhash_link ($block_hash)
+{
+	return "<a href=\"".$_SERVER["PHP_SELF"]."?block_hash=".$block_hash."\" title=\"View Block Details\">".$block_hash."</a>\n";
+}
+
+
+/**
+* Output the HTML for a section heading
+*
+* @param	string	$heading
+*/
+function section_head ($heading)
+{
+	echo "		<div class=\"section_head\">\n";
+	echo "			".$heading."\n";
+	echo "		</div>\n";
+	echo "\n";
+}
+
+
+/**
+* Output the HTML for a section subheading
+*
+* @param	string	$heading
+*/
+function section_subhead ($heading)
+{
+	echo "		<div class=\"section_subhead\">\n";
+	echo "			".$heading."\n";
+	echo "		</div>\n";
+	echo "\n";
+}
 	
 /******************************************************************************
 	This script is Copyright � 2013 Jake Paysnoe.
