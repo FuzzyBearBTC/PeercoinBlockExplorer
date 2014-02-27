@@ -4,7 +4,7 @@ function site_header ($title, $auth_list="") {
 	echo "<!DOCTYPE html PUBLIC \"-//W3C//DTD HTML 4.01 Transitional//EN\" \"http://www.w3.org/TR/html4/loose.dtd\">\n\n";
 	echo "<head>\n\n";
 	echo "	<title>".$title."</title>\n\n";	
-	echo "	<link rel=\"stylesheet\" type=\"text/css\" href=\"bc.css\">\n\n";
+	echo "	<link rel=\"stylesheet\" type=\"text/css\" href=\"css/bc.css\">\n\n";
 	echo "</head>\n";
 	echo "<body>\n";
 	echo "\n";
@@ -17,7 +17,7 @@ function site_header ($title, $auth_list="") {
 
 #		echo "	<h1><a href=\"".$_SERVER["PHP_SELF"]."\" title=\"Home Page\">\n";
 	echo "	<a href='./' title=\"Start Page\">\n";
-	echo "		<img src=\"./PeercoinBlockExplorerHeader.png\"></img></a>\n";
+	echo "		<img src=\"imgs/PeercoinBlockExplorerHeader.png\"></img></a>\n";
 	#echo "			<h3><a href='' title=\"Start Page\">\n";
 	#echo "				Block Chain Viewer\n";
 	#echo "			</a></h3>\n";
