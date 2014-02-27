@@ -1,7 +1,7 @@
 <?php
 
-	require_once ("bc_daemon.php");
-	require_once ("bc_layout.php");
+	require_once ("src/bc_daemon.php");
+	require_once ("src/bc_layout.php");
 	
 	
 //	If a block hash was provided the block detail is shown
