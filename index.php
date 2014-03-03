@@ -2,6 +2,7 @@
 
 	require_once ("src/bc_daemon.php");
 	require_once ("src/bc_layout.php");
+	require_once ("src/stats.php");
 	
 	
 //	If a block hash was provided the block detail is shown
@@ -32,10 +33,14 @@
 	else {
 		site_header("Block Viewer");
 		
+		//display info of pos/pow blocks in the last hours ( 24 default)
+		$hours=24;
 		echo "	<div id=\"node_info\">\n";
 		echo "\n";
 		
 		$network_info = getinfo ();
+
+		$POS=get_num_pos($hours);
 		
 		echo "		<div class=\"node_detail\">\n";
 		echo "			<span class=\"node_desc\">Block Count</span><br>\n";
@@ -52,6 +57,16 @@
 		echo "		<div class=\"node_detail\">\n";
 		echo "			<span class=\"node_desc\">Connections</span><br>\n";
 		echo "			<span class=\"node_desc_value\">".$network_info["connections"]."</span>\n";
+		echo "		</div>\n";
+		echo "\n";
+		echo "		<div class=\"node_detail\">\n";
+		echo "			<span class=\"node_desc\">POS blocks(".$hours."h)</span><br>\n";
+		echo "			<span class=\"node_desc_value\">".$POS."</span>\n";
+		echo "		</div>\n";
+		echo "\n";
+		echo "		<div class=\"node_detail\">\n";
+		echo "			<span class=\"node_desc\">POW blocks(".$hours."h)</span><br>\n";
+		echo "			<span class=\"node_desc_value\">".($hours*6-$POS)."</span>\n";
 		echo "		</div>\n";
 		echo "\n";
 
