@@ -109,6 +109,4 @@ require_once ("src/bc_layout.php");
 		$flags = $raw_block["flags"];
 		return $flags;
 	}
-
-	echo get_num_pos(24);
 ?>

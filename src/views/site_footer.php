@@ -4,7 +4,6 @@
 	<div id="donor_box">
 
 		<a href="http://donate.peercointalk.org" target="_blank">Donate to Peercointalk projects</a>
-		<span> or </span>
 		<a href="http://peer4commit.com/projects/4" target="_blank">
 			<img src="http://peer4commit.com/projects/4.svg">
 		</a>
