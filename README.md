@@ -11,8 +11,22 @@ Currently search via txid does not work on this block explorer but this is due t
 
 Requirements
 ------------
+
+Windows
+=======
 php 5.2
 
 ppcoind 0.3
 
-This has been tested on Windows 2008 SP2 server with php 5.2
+Tested on Windows 2008 SP2 server with php 5.2
+
+
+Linux
+=====
+
+php 5.5
+
+ppcoind 0.3
+
+Test on Gentoo with nginx.
+
