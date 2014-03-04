@@ -109,4 +109,20 @@ require_once ("src/bc_layout.php");
 		$flags = $raw_block["flags"];
 		return $flags;
 	}
+		function ratio($a, $b) {
+    $_a = $a;
+    $_b = $b;
+
+    while ($_b != 0) {
+
+        $remainder = $_a % $_b;
+        $_a = $_b;
+        $_b = $remainder;   
+    }
+
+    $gcd = abs($_a);
+
+    return ($a / $gcd)  . ':' . ($b / $gcd);
+
+}
 ?>
