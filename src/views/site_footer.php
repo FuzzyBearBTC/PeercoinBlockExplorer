@@ -1,4 +1,4 @@
- <!-- The page_wrap div is opened in the last line of the site_header function.	-->
+ <!-- The stats_wrap div is opened in the last line of the site_header function.	-->
 	</div>
 
 	<div id="donor_box">
