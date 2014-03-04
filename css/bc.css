@@ -66,6 +66,11 @@ body {
 	font-size:1.2em;
 	}
 	
+.node_desc_value_price{
+	color:rgba(32, 38, 43, 1);
+	font-size:1em;
+	}
+
 #site_menu {
 	width:500px;
 	margin:10px;

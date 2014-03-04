@@ -1,3 +1,4 @@
+
 <?php
 
 	require_once ("src/bc_daemon.php");
@@ -41,7 +42,12 @@
 		$network_info = getinfo ();
 
 		$POS=get_num_pos($hours);
-		
+		echo "		<div class=\"node_detail\">\n";
+		echo "			<span class=\"node_desc\">Price</span><br>\n";
+		echo "			<span class=\"node_desc_value_price\"><div id=\"ticker\">Loading...</div></span>\n";
+		echo "		</div>\n";
+		echo "\n";
+
 		echo "		<div class=\"node_detail\">\n";
 		echo "			<span class=\"node_desc\">Block Count</span><br>\n";
 		echo "			<span class=\"node_desc_value\">".$network_info["blocks"]."</span>\n";
