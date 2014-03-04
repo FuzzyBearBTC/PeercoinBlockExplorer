@@ -20,6 +20,11 @@ function site_footer ()
 	exit;
 }
 
+function site_stats ()
+{
+	include('views/site_stats.php');
+}
+
 
 /**
 * Output the block detail information HTML/PHP code
