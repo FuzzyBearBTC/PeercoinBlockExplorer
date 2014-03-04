@@ -8,7 +8,7 @@
 	}
 	
 body {
-	background-color:#44812C;
+	background-color:#20262b;
 	width:780px;
 	margin:0px auto;
 	}
@@ -42,7 +42,7 @@ body {
 #node_info {
 	width:200px;
 	margin:10px;
-	background:#44812C;
+	background:#ffffff;
 	border:1px solid rgba(0, 0, 0, 0.2);
 	border-radius:3px;
 	box-shadow:inset 0 0 3px rgba(0, 0, 0, 0.2);
@@ -62,10 +62,15 @@ body {
 	}
 
 .node_desc_value {
-	color:rgba(255, 255, 255, 0.95);
+	color:rgba(32, 38, 43, 1);
 	font-size:1.2em;
 	}
 	
+.node_desc_value_price{
+	color:rgba(32, 38, 43, 1);
+	font-size:1em;
+	}
+
 #site_menu {
 	width:500px;
 	margin:10px;
@@ -158,7 +163,7 @@ body {
 	
 .blockdetail_header {
 	width:210px;
-	background-color:#000000;
+	background-color:#20262b;
 	color:#ffffff;
 	font-weight:bold;
 	font-family:serif;
@@ -172,7 +177,7 @@ body {
 	
 .txlist_header {
 	width:740px;
-	background-color:#000000;
+	background-color:#20262b
 	margin:10px auto;
 	font-weight:bold;
 	font-family:serif;
@@ -198,7 +203,7 @@ body {
 	
 .section_head {
 	width:740px;
-	background-color:#000000;
+	background-color:#20262b;
 	margin:10px auto;
 	font-weight:bold;
 	font-family:serif;
@@ -231,7 +236,7 @@ body {
 .detail_title {
 	width:130px;
 	height:100%;
-	background-color:#000000;
+	background-color:#20262b;
 	color:#ffffff;
 	font-family:serif;
 	font-weight:bold;
@@ -257,9 +262,12 @@ body {
 	margin-top:0.5em;
 	}
 
-a {
-	color:#265314;
-	}
+a:hover {
+	color: #48c9b0;
+}
+a{
+	color: gray;
+}
 
 p {
 	margin:0.75em 0;
@@ -286,21 +294,12 @@ input[type="submit"], .pretty-button {
 	padding:0.5em 1em;
 	border:1px solid rgba(0, 0, 0, 0.2);
 	border-radius:2px;
-	background:#5B9943;
-	background:-webkit-linear-gradient(top, #5B9943, #44812C);
-	background:-moz-linear-gradient(top, #5B9943, #44812C);
-	background:-ms-linear-gradient(top, #5B9943, #44812C);
-	background:-o-linear-gradient(top, #5B9943, #44812C);
-	color:#ffffff;
+	background:#1abc9c;
 	font-weight:bold;
 	}
 
 input[type="submit"]:hover, .pretty-button:hover {
-	background:#67A54F;
-	background:-webkit-linear-gradient(top, #67A54F, #508D38);
-	background:-moz-linear-gradient(top, #67A54F, #508D38);
-	background:-ms-linear-gradient(top, #67A54F, #508D38);
-	background:-o-linear-gradient(top, #67A54F, #508D38);
+	background:#48c9b0;
 	}
 
 input[type="submit"]:active, .pretty-button:active {
