@@ -20,6 +20,8 @@ ppcoind 0.3
 
 Tested on Windows 2008 SP2 server with php 5.2
 
+Tested using Wamp Server 2.4 on x64 Win 7 with php 5.4.12
+
 
 Linux
 =====
