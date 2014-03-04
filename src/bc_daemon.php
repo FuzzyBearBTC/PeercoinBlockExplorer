@@ -89,6 +89,21 @@
 		return ($info);
 	}
 	
+	function getdifficulty ()
+	{
+	//The JSON starts with a method name
+		$request_array["method"] = "getdifficulty";
+		
+	// getdifficulty has no parameters
+	
+	// Send the request to the wallet
+	$info = wallet_fetch ($request_array);
+	
+	// This function returns an array containing information
+	// about the difficulty
+		return ($info);
+	}
+	
 
 	/**
 	* Get the network hash rate value (per second)
