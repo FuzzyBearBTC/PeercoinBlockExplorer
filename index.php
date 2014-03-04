@@ -1,4 +1,3 @@
-
 <?php
 
 	require_once ("src/bc_daemon.php");
@@ -99,7 +98,7 @@
 	
 	echo "<tr>"	;
 	echo "	<td>Total Coins:</td>\n";
-	echo "	<td>". $network_info["moneysupply"] . " Peercoins</td>\n";
+	echo "	<td>". intval($network_info["moneysupply"]) . " Peercoins</td>\n";
 	echo "</tr>"	;
 	
 	// PoS Difficulty
