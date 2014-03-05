@@ -33,32 +33,6 @@ POW:POS Block Ratio last 1h/24h/7d/1m/1y/all time
 Avg. Minted Reward last 1h/24h
 Avg. Mined Reward last 1h/24h
  
-So far I have started on the ratio part specifically the POW:POS last 24h. This is all sudo code at the moment.
-
-	Peercoin PoS vs PoW Blocks
-	Overview:
-	Get the last 180 blocks //because the current block time is an average of 8 minutes (when I checked) 60 minutes * 24 hours = 1440. 1440/8 = 180. Could make 
-this dynamic.
-	Check flags
-	Use accumulators to count how many PoW blocks and PoS blocks
-	Return bar graph
-
-	A little more detailed.
-	
-	Get the last 180 blocks
-	-Set time to currenttime
-	-Find current block
-	-Set iblock to currentblock - 180 
-	#-Set Totalblocks to 180
-	-Initialize PoW and PoS to 0
-	Check flags
-	-Look at first block and get flag
-	-Accumulate respective block type
-	#-Decrease Total blocks by 1
-	-Increase iblock by 1
-	-Repeat until iblock == currentblock
-	Return bar graph
-	-Make bar graph of each separate total with currentblock and currenttime
 */
 /*
 
@@ -84,24 +58,29 @@ require_once ("src/bc_layout.php");
 		
 		$iblock = intval($currentblock) - 6*$hours;
 		
-		$POW = $POS = 0;
+		$POScoins = 0;
+		$POWcoins = 0;
+		$POS = 0;
 		while ($iblock != intval($currentblock))
 		{
 			$flag = block_flag($iblock);
-			if ($flag == "proof-of-work")
-			{
-				$POW++;
-			}
-			else 
+			$coins = block_mint($iblock);
+			if ($flag == "proof-of-stake")
 			{
 				$POS++;
+				$POScoins += $coins;
+			}
+			else {
+				$POWcoins += $coins;
 			}
 			$iblock++;
 		}
-		return $POS;
+		return array($POS, $POScoins , $POWcoins);
 		
 	}
-		
+	
+	//Find the flag for a block
+	
 	function block_flag($block_id)
 	{
 		$block_hash = getblockhash($block_id);
@@ -109,6 +88,16 @@ require_once ("src/bc_layout.php");
 		$flags = $raw_block["flags"];
 		return $flags;
 	}
+	
+	// Find the minted or mined coins
+	function block_mint($block_id)
+	{
+		$block_hash = getblockhash($block_id);
+		$raw_block = getblock($block_hash);
+		$mint = $raw_block["mint"];
+		return $mint;
+	}
+	
 		function ratio($a, $b) {
     $_a = $a;
     $_b = $b;

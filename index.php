@@ -38,16 +38,16 @@
 		$difficulty_info = getdifficulty ();
 
 
-/*
-		$net_speed = getnetworkhashps ();
+
+/*		$net_speed = getnetworkhashps ();
 		if ($net_speed != "") {
 			echo "		<div class=\"node_detail\">\n";
 			echo "			<span class=\"node_desc\">Network H/s:</span><br>\n";
 			echo "			".$net_speed."\n";
 			echo "		</div>\n";
 			echo "\n";
-		}
-*/		
+		}*/
+	
 		echo "\n";
 
 		echo "	<div id=\"site_menu\">\n";
@@ -98,7 +98,16 @@
 	
 	echo "<tr>"	;
 	echo "	<td>Total Coins:</td>\n";
-	echo "	<td>". intval($network_info["moneysupply"]) . " Peercoins</td>\n";
+	$totalcoins = intval($network_info["moneysupply"]);
+	$totalcoins = number_format($totalcoins, 0 , '.' , ',');
+	echo "	<td>" . $totalcoins . " Peercoins</td>\n";
+	echo "</tr>"	;
+	
+	// Price
+	
+	echo "<tr>"	;
+	echo "	<td>Price:</td>\n";
+	echo "	<td><div id=\"ticker\">Loading...</div></td>\n"; 
 	echo "</tr>"	;
 	
 	// PoS Difficulty
@@ -115,12 +124,25 @@
 	echo "	<td>". $difficulty_info["proof-of-work"] ."</td>\n"; 
 	echo "</tr>"	;
 	
-	// Price
+	//Minted Reward last 1h/24h
 	
-	echo "<tr>"	;
-	echo "	<td>Price:</td>\n";
-	echo "	<td><div id=\"ticker\">Loading...</div></td>\n"; 
-	echo "</tr>"	;
+	$hours = 1;
+	list ($POS1, $POScoins1, $POWcoins1) = get_num_pos($hours);
+	list ($POS24, $POScoins24, $POWcoins24) = get_num_pos($hours * 24);
+	$POW1 = ($hours * 6 - $POS1);
+	$POW24 = ($hours * 6 * 24 - $POS24);
+	
+	echo "<tr>";
+	echo "	<td>PoS Minting Reward 1h/24h:</td>\n";
+	echo "	<td>" . $POScoins1 . "/" . $POScoins24 . "</td>\n";
+	echo "</tr>\n";
+	
+	//Mined Reward last 1h/24h
+	
+	echo "<tr>";
+	echo "	<td>PoW Mining Reward 1h/24h:</td>\n";
+	echo "	<td>" . $POWcoins1  . "/" . $POWcoins24 . "</td>\n";
+	echo "</tr>\n";
 	
 	// Market Cap
 	
@@ -128,32 +150,28 @@
 	
 	echo "<tr>"	;
 	echo "	<td>Total Blocks:</td>\n";
-	echo "	<td>". $network_info["blocks"] ." Blocks </td>\n";
+	$totalblocks = intval($network_info["blocks"]);
+	echo "	<td>". number_format($totalblocks, 0 , '.' , ',') ." Blocks </td>\n";
 	echo "</tr>"	;
 	
 	// POS vs POW Blocks
-	echo "	<td>PoS Blocks last 24h/7d:</td>\n";
-	$hours = 24;
-	$POS24 = get_num_pos($hours);
-	$POS7 = get_num_pos($hours * 7);
-	$POW24 = ($hours * 6 - $POS24);
-	$POW7 = ($hours * 6 * 7 - $POS7);
+	echo "<tr>";
+	echo "	<td>PoS Blocks last 1h/24h:</td>\n";
 	
-	echo "	<td>" . $POS24 . "/" . $POS7 . "</td>\n";
+	echo "	<td>" . $POS1 . "/" . $POS24 . "</td>\n";
 	echo "</tr>\n";
 	echo "<tr>";
-	echo "	<td>PoW Blocks last 24h/7d:</td>\n";
-	$hours = 24;
-	echo "	<td>" . $POW24  . "/" . $POW7 . "</td>\n";
+	echo "	<td>PoW Blocks 1h/24h:</td>\n";
+	echo "	<td>" . $POW1  . "/" . $POW24 . "</td>\n";
 	echo "</tr>\n";
 	
 	// POS:POW Ratio
 	
-	$ratio24 = ratio($POS24, $POW24); 
-	$ratio7 = ratio($POS7, $POW7);
+	$ratio1 = ratio($POS1, $POW1); 
+	$ratio24 = ratio($POS24, $POW24);
 	echo "<tr>"	;
-	echo "	<td>PoS:PoW Ratio last 24h/7d:</td>\n";
-	echo "	<td>" . $ratio24 . "/" . $ratio7 . "  </td>\n";
+	echo "	<td>PoS:PoW Ratio 1h/24:</td>\n";
+	echo "	<td>" . $ratio1 . "/" . $ratio24 . "  </td>\n";
 	echo "</tr>"	;
 	
 	//Connections
@@ -163,19 +181,11 @@
 	echo "	<td>". $network_info["connections"] ."</td>\n"; //I couldn't make out how you ended up outputting the price mark-bl.
 	echo "</tr>"	;
 	
-	
-	//Minted Reward last 1h/24h
-	
-	//Mined Reward last 1h/24h
-	
 	echo "</table>\n";
 	
 	echo "<div id=\"credits_box\"><a href=\"http://www.peercointalk.org\" target=\"_blank\">Brought to you by FuzzyBear and PeercoinTalk.org</a></div>\n";
 	echo "\n";
 	echo "<a href=\"http://peercoin.net\" target=\"_blank\"><img id=\"peercoin_logo\" src=\"http://merchanttools.peercointalk.org/Logo/Logo.png\" alt=\"Peercoin Logo\" title=\"Peercoin Logo\"></img></a>";
-	
-	
-	
 	
 	}
 	
