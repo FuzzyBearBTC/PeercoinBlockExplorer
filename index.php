@@ -98,7 +98,9 @@
 	
 	echo "<tr>"	;
 	echo "	<td>Total Coins:</td>\n";
-	echo "	<td>". intval($network_info["moneysupply"]) . " Peercoins</td>\n";
+	$totalcoins = intval($network_info["moneysupply"]);
+	$totalcoins = number_format($totalcoins, 0 , '.' , ',');
+	echo "	<td>" . $totalcoins . " Peercoins</td>\n";
 	echo "</tr>"	;
 	
 	// Price
@@ -148,7 +150,8 @@
 	
 	echo "<tr>"	;
 	echo "	<td>Total Blocks:</td>\n";
-	echo "	<td>". $network_info["blocks"] ." Blocks </td>\n";
+	$totalblocks = intval($network_info["blocks"]);
+	echo "	<td>". number_format($totalblocks, 0 , '.' , ',') ." Blocks </td>\n";
 	echo "</tr>"	;
 	
 	// POS vs POW Blocks
