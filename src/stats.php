@@ -44,11 +44,11 @@ require_once ("src/bc_daemon.php");
 require_once ("src/bc_layout.php");
 
 	/**
-	* Get the number of pos block in the last @param hours
+	* Get the number of pos blocks, pos/pow coins and avg pos/pow coins in the last @param hours
 	*
 	* @param	int	$hours
 	*
-	* @return	int
+	* @return	int $POS, $POScoins, $POWcoins, $avgPOScoins, $avgPOWcoins
 	*/
 	function get_num_pos($hours) 
 	{
@@ -61,7 +61,11 @@ require_once ("src/bc_layout.php");
 		$POScoins = 0;
 		$POWcoins = 0;
 		$POS = 0;
-		while ($iblock != intval($currentblock))
+		$POW = 0;
+		$avgPOScoins = 0;
+		$avgPOWcoins = 0;
+		
+		while ($iblock <= intval($currentblock))
 		{
 			$flag = block_flag($iblock);
 			$coins = block_mint($iblock);
@@ -71,15 +75,18 @@ require_once ("src/bc_layout.php");
 				$POScoins += $coins;
 			}
 			else {
+				$POW++;
 				$POWcoins += $coins;
 			}
 			$iblock++;
 		}
-		return array($POS, $POScoins , $POWcoins);
+		$avgPOScoins = $POScoins/$POS;
+		$avgPOWcoins = $POWcoins/$POW;
+		return array($POS, $POScoins , $POWcoins, $avgPOScoins, $avgPOWcoins);
 		
 	}
 	
-	//Find the flag for a block
+	// Find the flag for a block
 	
 	function block_flag($block_id)
 	{
@@ -98,20 +105,20 @@ require_once ("src/bc_layout.php");
 		return $mint;
 	}
 	
-		function ratio($a, $b) {
-    $_a = $a;
-    $_b = $b;
+	// For making the ratios
+	function ratio($a, $b) {
+    	$_a = $a;
+    	$_b = $b;
 
-    while ($_b != 0) {
+    	while ($_b != 0) {
 
-        $remainder = $_a % $_b;
-        $_a = $_b;
-        $_b = $remainder;   
-    }
+        	$remainder = $_a % $_b;
+        	$_a = $_b;
+        	$_b = $remainder;   
+    	}
 
-    $gcd = abs($_a);
+    	$gcd = abs($_a);
 
-    return ($a / $gcd)  . ':' . ($b / $gcd);
-
+    	return ($a / $gcd)  . ':' . ($b / $gcd);
 }
 ?>
