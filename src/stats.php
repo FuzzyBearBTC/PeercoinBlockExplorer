@@ -6,19 +6,19 @@ So I was thinking there are a lot of statistics that are currently not readily a
 adding some of them.
 
 Here are some stats we can maybe add over time:
-Peercoin Price
+-Peercoin Price
 Market Capitalization
 Transactions last 24h
 Transactions avg. per hour
 Peercoins sent avg. per hour (last 24h)
 Avg. transaction value (last 24h)
 Avg. Confirmation Time last 24h
-Block Count
-Blocks last 24h
+-Block Count
+-Blocks last 24h
 Blocks avg. per hour (last 24h)
-Total Reward (last 24h)
+-Total Reward (last 24h)
 Orphaned BLocks (last 24h)
-Difficulty
+-Difficulty
 Network Hashrate (avg. yesterday)
 Top 100 Richest Addresses
 Addresses richer than 1/100/1,000/10,000
@@ -29,9 +29,9 @@ Blockchain Size
 Peercoin Days Destroyed last 24h / Total Peercoins
 
 The stats that would be unique to POS/POW hybrid (The ones that are not out there):
-POW:POS Block Ratio last 1h/24h/7d/1m/1y/all time
-Avg. Minted Reward last 1h/24h
-Avg. Mined Reward last 1h/24h
+-POW:POS Block Ratio last 1h/24h/7d/1m/1y/all time
+-Avg. Minted Reward last 1h/24h
+-Avg. Mined Reward last 1h/24h
  
 */
 /*
@@ -69,20 +69,20 @@ require_once ("src/bc_layout.php");
 		{
 			$flag = block_flag($iblock);
 			$coins = block_mint($iblock);
-			if ($flag == "proof-of-stake")
+			if ($flag == "proof-of-work")
 			{
-				$POS++;
-				$POScoins += $coins;
-			}
-			else {
 				$POW++;
 				$POWcoins += $coins;
+			}
+			else{ 
+				$POS++;
+				$POScoins += $coins;
 			}
 			$iblock++;
 		}
 		$avgPOScoins = $POScoins/$POS;
 		$avgPOWcoins = $POWcoins/$POW;
-		return array($POS, $POScoins , $POWcoins, $avgPOScoins, $avgPOWcoins);
+		return array($POS, $POW, $POScoins , $POWcoins, $avgPOScoins, $avgPOWcoins);
 		
 	}
 	
@@ -107,18 +107,18 @@ require_once ("src/bc_layout.php");
 	
 	// For making the ratios
 	function ratio($a, $b) {
-    	$_a = $a;
-    	$_b = $b;
+    $_a = $a;
+    $_b = $b;
 
-    	while ($_b != 0) {
+    while ($_b != 0) {
 
-        	$remainder = $_a % $_b;
-        	$_a = $_b;
-        	$_b = $remainder;   
-    	}
+        $remainder = $_a % $_b;
+        $_a = $_b;
+        $_b = $remainder;   
+    }
 
-    	$gcd = abs($_a);
+    $gcd = abs($_a);
 
-    	return ($a / $gcd)  . ':' . ($b / $gcd);
-}
+    return ($a / $gcd)  . ':' . ($b / $gcd);
+	}
 ?>
