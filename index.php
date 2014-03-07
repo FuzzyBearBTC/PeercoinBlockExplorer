@@ -127,22 +127,36 @@
 	//Minted Reward last 1h/24h
 	
 	$hours = 1;
-	list ($POS1, $POScoins1, $POWcoins1) = get_num_pos($hours);
-	list ($POS24, $POScoins24, $POWcoins24) = get_num_pos($hours * 24);
+	list ($POS1, $POScoins1, $POWcoins1, $avgPOScoins1, $avgPOWcoins1) = get_num_pos($hours);
+	list ($POS24, $POScoins24, $POWcoins24, $avgPOScoins24, $avgPOWcoins24) = get_num_pos($hours * 24);
 	$POW1 = ($hours * 6 - $POS1);
 	$POW24 = ($hours * 6 * 24 - $POS24);
 	
 	echo "<tr>";
-	echo "	<td>PoS Minting Reward 1h/24h:</td>\n";
+	echo "	<td>PoS Minting Reward (last 1h/24h):</td>\n";
 	echo "	<td>" . $POScoins1 . "/" . $POScoins24 . "</td>\n";
 	echo "</tr>\n";
+	
+	//Average Minted Reward last 1h/24h
+	
+	echo "<tr>";
+	echo "	<td>Average PoS Minting Reward (last 1h/24h):</td>\n";
+	echo "	<td>" . round($avgPOScoins1, 2) . "/" . round($avgPOScoins24, 2) . "</td>\n";
+	echo "</tr>\n";	
 	
 	//Mined Reward last 1h/24h
 	
 	echo "<tr>";
-	echo "	<td>PoW Mining Reward 1h/24h:</td>\n";
+	echo "	<td>PoW Mining Reward (last 1h/24h):</td>\n";
 	echo "	<td>" . $POWcoins1  . "/" . $POWcoins24 . "</td>\n";
 	echo "</tr>\n";
+	
+	//Average Mined Reward last 1h/24h
+	
+	echo "<tr>";
+	echo "	<td>Average PoW Mining Reward (last 1h/24h):</td>\n";
+	echo "	<td>" . round($avgPOWcoins1, 2)  . "/" . round($avgPOWcoins24, 2) . "</td>\n";
+	echo "</tr>\n";	
 	
 	// Market Cap
 	
@@ -156,12 +170,12 @@
 	
 	// POS vs POW Blocks
 	echo "<tr>";
-	echo "	<td>PoS Blocks last 1h/24h:</td>\n";
+	echo "	<td>PoS Blocks (last 1h/24h):</td>\n";
 	
 	echo "	<td>" . $POS1 . "/" . $POS24 . "</td>\n";
 	echo "</tr>\n";
 	echo "<tr>";
-	echo "	<td>PoW Blocks 1h/24h:</td>\n";
+	echo "	<td>PoW Blocks (last 1h/24h):</td>\n";
 	echo "	<td>" . $POW1  . "/" . $POW24 . "</td>\n";
 	echo "</tr>\n";
 	
