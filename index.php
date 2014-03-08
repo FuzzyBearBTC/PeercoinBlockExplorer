@@ -110,6 +110,13 @@
 	echo "	<td><div id=\"ticker\">Loading...</div></td>\n"; 
 	echo "</tr>"	;
 	
+	// Market Capitalization
+	
+	echo "<tr>"	;
+	echo "	<td>Market Capitalization:</td>\n";
+	echo "	<td><div id=\"marketcap\">Loading...</div></td>\n"; 
+	echo "</tr>"	;
+	
 	// PoS Difficulty
 	
 	echo "<tr>"	;
