@@ -67,7 +67,9 @@
 <div class="blocknav">
 
 	<div class="blocknav_prev">
+		<?php if ($raw_block["previousblockhash"]) { ?>
 		<a href="?block_hash=<?php echo $raw_block["previousblockhash"]; ?>" title="View Previous Block"><- Previous Block</a>
+		<?php } ?>
 	</div>
 
 
@@ -77,7 +79,9 @@
 
 
 	<div class="blocknav_next">
+		<?php if ($raw_block["nextblockhash"]) { ?>
 		<a href="<?php echo $_SERVER["PHP_SELF"] . "?block_hash=" . $raw_block["nextblockhash"]; ?>" title="View Next Block">Next Block -></a>
+		<?php } ?>
 	</div>
 
 
