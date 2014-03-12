@@ -41,11 +41,11 @@ POW vs PoS 24hr
 */
 
 /*Iheart Comment: Note that the RPC interface is not able to achieve all of the stats Hibero is interested in.  We will have to add some sort of SQL database to parse the blockchain.
-See https://github.com/snakie/blockparser as possible solution to incorporate
+See http://github.com/snakie/blockparser as possible solution to incorporate
 */
 
-require_once ("src/bc_daemon.php");
-require_once ("src/bc_layout.php");
+require_once ("src/PPC_daemon.php");
+require_once ("src/PPC_layout.php");
 
 	/**
 	* Get the number of pos block in the last @param hours
