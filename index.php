@@ -17,8 +17,17 @@
 	elseif (isset ($_REQUEST["block_height"]))
 	{
 		site_header ("Block Detail Page");
+
+		$block_height = $_REQUEST["block_height"];
+
+		if(empty ($block_height))
+		{
+			$network_info = getinfo ();
+			// Default to the latest block
+			$block_height = intval($network_info["blocks"]);
+		}
 		
-		block_detail ($_REQUEST["block_height"]);
+		block_detail ($block_height);
 	}
 	
 //	If a TXid was provided the TX Detail is shown
