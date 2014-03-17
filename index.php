@@ -1,8 +1,8 @@
-<?php
+﻿<?php
 
-	require_once ("src/bc_daemon.php");
-	require_once ("src/bc_layout.php");
-	require_once ("src/stats.php");
+	require_once ("src/PPC_daemon.php");
+	require_once ("src/PPC_layout.php");
+	require_once ("src/stats_controller.php");
 	
 	
 //	If a block hash was provided the block detail is shown
