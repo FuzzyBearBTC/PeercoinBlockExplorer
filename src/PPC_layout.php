@@ -47,7 +47,7 @@ function block_detail($block_id, $hash=FALSE)
 
 
 /**
-* Output trasnaction details via HTML code
+* Output transaction details via HTML code
 *
 * @param	string	$tx_id
 */	
