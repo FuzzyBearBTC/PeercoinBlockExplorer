@@ -56,172 +56,130 @@
 			echo "		</div>\n";
 			echo "\n";
 		}*/
-	
-		echo "\n";
+?>
+<div id="site_menu">
+	<p class="center"></p>
+	<center>Explore the Peercoin blockchain by looking for a Block Number (Index), Block Hash, or Transaction ID.</center>
+	<div class="menu_item">
+		<form action="<?php $_SERVER["PHP_SELF"]; ?>" method="post">
+			<label for="block_height" class="menu_desc">Enter a Block Number</label><br>
+			<input class="form-control" type="text" name="block_height" id="block_height">
+			<input class="btn btn-success" type="submit" name="submit" value="Jump To Block">
+		</form>
+	</div>
 
-		echo "	<div id=\"site_menu\">\n";
-		echo "\n";
+	<div class="menu_item">
+		<form action="/index.php" method="post">
+			<label for="block_hash" class="menu_desc">Enter a Block Hash</label><br>
+			<input class="form-control" type="text" name="block_hash" id="block_hash">
+			<input class="btn btn-success" type="submit" name="submit" value="Jump To Block">
+		</form>
+	</div>
 
-		echo "		<p class=\"center\"><center>Explore the Peercoin blockchain by looking for a Block Number (Index), Block Hash, or Transaction ID.</center></p>";
-		echo "		<br />";
-		
-		echo "		<div class=\"menu_item\">\n";
-		echo "			<form action=\"\" method=\"post\">\n";
-		echo "				<label for=\"block_height\" class=\"menu_desc\">Enter a Block Number</label><br>\n";
-		echo "				<input type=\"text\" name=\"block_height\" id=\"block_height\" size=\"130px\">\n";
-		echo "				<input type=\"submit\" name=\"submit\" value=\"Jump To Block\">\n";
-		echo "			</form>\n";
-		echo "		</div>\n";
-		echo "\n";
+	<div class="menu_item">
+		<form action="/index.php" method="post">
+			<label for="transaction" class="menu_desc">Enter a Transaction ID</label><br>
+			<input class="form-control" type="text" name="transaction" id="transaction">
+			<input class="btn btn-success" type="submit" name="submit" value="Jump To TX">
+		</form>
+		<div class="menu_item">
+			<p class="menu_desc"><center>Find out more on Peercoin (PPC)</center></p>
+			<a href="http://peercoin.net" target="_blank"><center>Visit Peercoin.net Official Peercoin Website</center></a> 		</div>
+			<a href="http://www.peercointalk.org" target="_blank"><center>Official Peercoin Forum</center></a> 	
+		</div>
+	</div>
 
-		echo "		<div class=\"menu_item\">\n";
-		echo "			<form action=\"".$_SERVER["PHP_SELF"]."\" method=\"post\">\n";
-		echo "				<label for=\"block_hash\" class=\"menu_desc\">Enter a Block Hash</label><br>\n";
-		echo "				<input type=\"text\" name=\"block_hash\" id=\"block_hash\" size=\"130px\">\n";
-		echo "				<input type=\"submit\" name=\"submit\" value=\"Jump To Block\">\n";
-		echo "			</form>\n";
-		echo "		</div>\n";
-		echo "\n";
+<?php
 
-		echo "		<div class=\"menu_item\">\n";
-		echo "			<form action=\"".$_SERVER["PHP_SELF"]."\" method=\"post\">\n";
-		echo "				<label for=\"transaction\" class=\"menu_desc\">Enter a Transaction ID</label><br>\n";
-		echo "				<input type=\"text\" name=\"transaction\" id=\"transaction\" size=\"130px\">\n";
-		echo "				<input type=\"submit\" name=\"submit\" value=\"Jump To TX\">\n";
-		echo "			</form>\n";
-		echo "		<div class=\"menu_item\">\n";
-		echo "			<span class=\"menu_desc\"><center>Find out more on Peercoin (PPC)</center></span><br>\n";
-		echo "<a href=\"http://peercoin.net\" target=\"_blank\"><center>Visit Peercoin.net Official Peercoin Website</center></a> 		</div>\n";
-		echo "	<a href=\"http://www.peercointalk.org\" target=\"_blank\"><center>Official Peercoin Forum</center></a> 	</div>\n";
-		echo "\n";
-
-		echo "	</div>\n";
-		echo "\n";
-		echo "	</div>\n";
 	site_stats();
 	
-	echo "<body style=\"vertical-align:middle\">";
-	echo "<table style=\"display:inline-block\" align = \"center\" >";
-	
 	// Total Coins
-	
-	echo "<tr>"	;
-	echo "	<td>Total Coins:</td>\n";
 	$totalcoins = intval($network_info["moneysupply"]);
 	$totalcoins = number_format($totalcoins, 0 , '.' , ',');
-	echo "	<td>" . $totalcoins . " Peercoins</td>\n";
-	echo "</tr>"	;
-	
-	// Price
-	
-	echo "<tr>"	;
-	echo "	<td>Price:</td>\n";
-	echo "	<td><div id=\"ticker\">Loading...</div></td>\n"; 
-	echo "</tr>"	;
-	
-	// Market Capitalization
-	
-	echo "<tr>"	;
-	echo "	<td>Market Capitalization:</td>\n";
-	echo "	<td><div id=\"marketcap\">Loading...</div></td>\n"; 
-	echo "</tr>"	;
-	
-	// PoS Difficulty
-	
-	echo "<tr>"	;
-	echo "	<td>PoS Difficulty:</td>\n";
-	echo "	<td>". $difficulty_info["proof-of-stake"] ."</td>\n"; 
-	echo "</tr>"	;
-	
-	// PoW Difficulty
-	
-	echo "<tr>"	;
-	echo "	<td>PoW Difficulty:</td>\n";
-	echo "	<td>". $difficulty_info["proof-of-work"] ."</td>\n"; 
-	echo "</tr>"	;
-	
+
 	//Minted Reward last 1h/24h
-	
 	$hours = 1;
 	list ($POS1, $POW1, $POScoins1, $POWcoins1, $avgPOScoins1, $avgPOWcoins1) = get_num_pos($hours);
 	list ($POS24, $POW24, $POScoins24, $POWcoins24, $avgPOScoins24, $avgPOWcoins24) = get_num_pos($hours * 24);
-	
-	echo "<tr>";
-	echo "	<td>PoS Minting Reward (last 1h/24h):</td>\n";
-	echo "	<td>" . $POScoins1 . "/" . $POScoins24 . "</td>\n";
-	echo "</tr>\n";
-	
-	//Average Minted Reward last 1h/24h
-	
-	echo "<tr>";
-	echo "	<td>Average PoS Minting Reward (last 1h/24h):</td>\n";
-	echo "	<td>" . round($avgPOScoins1, 2) . "/" . round($avgPOScoins24, 2) . "</td>\n";
-	echo "</tr>\n";	
-	
-	//Mined Reward last 1h/24h
-	
-	echo "<tr>";
-	echo "	<td>PoW Mining Reward (last 1h/24h):</td>\n";
-	echo "	<td>" . $POWcoins1  . "/" . $POWcoins24 . "</td>\n";
-	echo "</tr>\n";
-	
-	//Average Mined Reward last 1h/24h
-	
-	echo "<tr>";
-	echo "	<td>Average PoW Mining Reward (last 1h/24h):</td>\n";
-	echo "	<td>" . round($avgPOWcoins1, 2)  . "/" . round($avgPOWcoins24, 2) . "</td>\n";
-	echo "</tr>\n";	
-	
-	// Market Cap
-	
+
 	// Total Blocks
-	
-	echo "<tr>"	;
-	echo "	<td>Total Blocks:</td>\n";
 	$totalblocks = intval($network_info["blocks"]);
-	echo "	<td>". number_format($totalblocks, 0 , '.' , ',') ." Blocks </td>\n";
-	echo "</tr>"	;
-	
-	// POS Blocks
-	
-	echo "<tr>";
-	echo "	<td>PoS Blocks (last 1h/24h):</td>\n";
-	
-	echo "	<td>" . $POS1 . "/" . $POS24 . "</td>\n";
-	echo "</tr>\n";
-	
-	// POW Blocks
-	
-	echo "<tr>";
-	echo "	<td>PoW Blocks (last 1h/24h):</td>\n";
-	echo "	<td>" . $POW1  . "/" . $POW24 . "</td>\n";
-	echo "</tr>\n";
-	
+
 	// POS:POW Ratio
-	
 	$ratio1 = ratio($POS1, $POW1); 
 	$ratio24 = ratio($POS24, $POW24);
-	echo "<tr>"	;
-	echo "	<td>PoS:PoW Ratio 1h/24:</td>\n";
-	echo "	<td>" . $ratio1 . "/" . $ratio24 . "  </td>\n";
-	echo "</tr>"	;
+?>
+
+
+<div class="coin-overview">
+	<dl>
+		<dt>Total Coins:</dt>
+		<dd><?php echo $totalcoins; ?></dd>
+	</dl>
+	<dl>
+		<dt>Price:</dt>
+		<dd><span id="ticker">Loading...</span></dd>
+	</dl>
+	<dl>
+		<dt>Market Capitalization:</dt>
+		<dd><span id="marketcap">Loading...</span></dd>
+	</dl>
+	<dl>
+		<dt>PoS Difficulty:</dt>
+		<dd><?php echo $difficulty_info["proof-of-stake"]; ?></dd>
+	</dl>
+	<dl>
+		<dt>PoW Difficulty:</dt>
+		<dd><?php echo $difficulty_info["proof-of-work"]; ?></dd>
+	</dl>
+	<dl>
+		<dt>PoS Minting Reward (last 1h/24h):</dt>
+		<dd><?php echo $POScoins1 . "/" . $POScoins24; ?></dd>
+	</dl>
+	<dl>
+		<dt>Average PoS Minting Reward (last 1h/24h):</dt>
+		<dd><?php echo round($avgPOScoins1, 2) . "/" . round($avgPOScoins24, 2); ?></dd>
+	</dl>
+	<dl>
+		<dt>PoW Mining Reward (last 1h/24h):</dt>
+		<dd><?php echo $POWcoins1  . "/" . $POWcoins24; ?></dd>
+	</dl>
+	<dl>
+		<dt>Average PoW Mining Reward (last 1h/24h):</dt>
+		<dd><?php echo round($avgPOWcoins1, 2)  . "/" . round($avgPOWcoins24, 2); ?></dd>
+	</dl>
+	<dl>
+		<dt>Total Blocks:</dt>
+		<dd><?php echo number_format($totalblocks, 0 , '.' , ','); ?>Blocks</dd>
+	</dl>
+	<dl>
+		<dt>PoS Blocks (last 1h/24h):</dt>
+		<dd><?php echo $POS1 . "/" . $POS24; ?></dd>
+	</dl>
+	<dl>
+		<dt>PoW Blocks (last 1h/24h):</dt>
+		<dd><?php echo $POW1  . "/" . $POW24; ?></dd>
+	</dl>
+	<dl>
+		<dt>PoS:PoW Ratio 1h/24:</dt>
+		<dd><?php echo $ratio1 . "/" . $ratio24; ?></dd>
+	</dl>
+	<dl class="last">
+		<dt>Connections:</dt>
+		<dd><?php echo $network_info["connections"]; ?></dd>
+	</dl>
 	
-	//Connections
+	<p><a href="http://www.peercointalk.org" target="_blank">Brought to you by FuzzyBear and PeercoinTalk.org</a></p>
+	<div class="logolink">
+		<a href="http://peercoin.net" target="_blank"><img id="peercoin_logo" src="http://merchanttools.peercointalk.org/Logo/Logo.png" alt="Peercoin Logo" title="Peercoin Logo"></a>
+	</div>
+</div>
+
 	
-	echo "<tr>"	;
-	echo "	<td>Connections:</td>\n";
-	echo "	<td>". $network_info["connections"] ."</td>\n"; //I couldn't make out how you ended up outputting the price mark-bl.
-	echo "</tr>"	;
-	
-	echo "</table>\n";
-	
-	echo "<div id=\"credits_box\"><a href=\"http://www.peercointalk.org\" target=\"_blank\">Brought to you by FuzzyBear and PeercoinTalk.org</a></div>\n";
-	echo "\n";
-	echo "<a href=\"http://peercoin.net\" target=\"_blank\"><img id=\"peercoin_logo\" src=\"http://merchanttools.peercointalk.org/Logo/Logo.png\" alt=\"Peercoin Logo\" title=\"Peercoin Logo\"></img></a>";
-	
+<?php
+
 	}
-	
-	
+
 	site_footer ();
 
 /******************************************************************************

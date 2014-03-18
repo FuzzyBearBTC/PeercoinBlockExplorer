@@ -1,7 +1,6 @@
 * {
 	margin:0px;
 	padding:0px;
-	text-align:center;
 	font-family:sans-serif;
 	box-sizing:border-box;
 	-moz-box-sizing:border-box;
@@ -39,6 +38,33 @@ body {
 	overflow:auto;
 	}
 	
+.coin-overview{
+	text-align: left;
+	padding:20px;
+	position: relative;
+}
+.coin-overview .logolink{
+	position: absolute;
+	top: -10px;
+	right: 0;
+}
+.coin-overview dl{
+	padding: 10px 0;
+	margin-bottom: 0;
+	border-bottom: 1px solid #D6D6D6;
+}
+.coin-overview .last{
+	border:0 none;
+}
+.coin-overview dt{
+	display: inline-block;
+	width: 340px;
+}
+.coin-overview dd{
+	display: inline-block;
+}
+
+
 #stats_wrap {
 	width:768px;
 	background-color:#ffffff;
@@ -84,13 +110,12 @@ body {
 	}
 
 .menu_item {
-	width:490px;
+	width:500px;
 	margin:20px auto;
 	text-align:left;
 	}
 	
 .menu_item form {
-	width:490px;
 	text-align:left;
 	}
 	
@@ -287,30 +312,12 @@ p {
 #donor_box a {
 	display: inline-block;
 	margin:0 0.5em;
-	}
+	text-align: center;
+}
 
-input[type="text"] {
+.menu_item input[type="text"] {
 	text-align:left;
 	width: 355px;
-	border:1px solid rgba(0, 0, 0, 0.2);
-	padding:0.5em;
-	border-radius:2px;
-	}
+	display: inline-block;
+}
 
-input[type="submit"], .pretty-button {
-	padding:0.5em 1em;
-	width: 130px;
-	float: right;
-	border:1px solid rgba(0, 0, 0, 0.2);
-	border-radius:2px;
-	background:#1abc9c;
-	font-weight:bold;
-	}
-
-input[type="submit"]:hover, .pretty-button:hover {
-	background:#48c9b0;
-	}
-
-input[type="submit"]:active, .pretty-button:active {
-	box-shadow:inset 0 0 8px rgba(0, 0, 0, 0.2);
-	}

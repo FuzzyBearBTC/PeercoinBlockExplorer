@@ -5,8 +5,8 @@
 ******************************************************************************/
 	$GLOBALS["wallet_ip"] = "127.0.0.1";
 	$GLOBALS["wallet_port"] = "9902";
-	$GLOBALS["wallet_user"] = "USERNAME";
-	$GLOBALS["wallet_pass"] = "PASSWORD";
+	$GLOBALS["wallet_user"] = "Ulysseys";
+	$GLOBALS["wallet_pass"] = "EaXyc385593";
 
 	$coin_name = "Peercoin";
 
