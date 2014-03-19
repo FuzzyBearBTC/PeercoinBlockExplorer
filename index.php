@@ -48,14 +48,8 @@
 
 
 
-/*		$net_speed = getnetworkhashps ();
-		if ($net_speed != "") {
-			echo "		<div class=\"node_detail\">\n";
-			echo "			<span class=\"node_desc\">Network H/s:</span><br>\n";
-			echo "			".$net_speed."\n";
-			echo "		</div>\n";
-			echo "\n";
-		}*/
+		$net_speed = getnetworkhashps ();
+	}
 ?>
 <div id="site_menu">
 	<p class="center"></p>
@@ -112,6 +106,18 @@
 
 
 <div class="coin-overview">
+        <dl>
+                <dt>Network Hashrate:</dt>
+                <dd>
+                <?php
+                if (intval($net_speed) < 1024) {
+                echo "".number_format($net_speed,2)." MH/s";
+                } else {
+                $net_speed = number_format(($net_speed / 1024),2);
+                echo "".$net_speed." GH/s";
+                ?>
+                </dd>
+        </dl>
 	<dl>
 		<dt>Total Coins:</dt>
 		<dd><?php echo $totalcoins; ?></dd>
