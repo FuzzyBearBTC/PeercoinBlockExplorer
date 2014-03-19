@@ -108,32 +108,20 @@
 	/**
 	* Get the network hash rate value (per second)
 	*
-	* @param	int		$block_index	[Optional] Block height/index
-	*
 	* @return	string
 	*/
-	function getnetworkhashps ($block_index=NULL)
-	{
-	//	The JSON-RPC request starts with a method name
-		$request_array["method"] = "getnetworkhashps";
-	
-	//	block index is an optional parameter. If no block
-	//	index is specified you get the network hashrate for 
-	//	the latest block
-		
-		if (isset ($block_index))
-		{
-			$request_array["params"][0] = $block_index;
-		}
-		
-	//	Send the request to the wallet
-		$info = wallet_fetch ($request_array);
-		
-	//	This function returns a string containing the calculated
-	//	network hash rate for the latest block
-		return ($info["netmhashps"]);
-	}
-	
+        function getnetworkhashps ()
+        {
+        //      The JSON-RPC request starts with a method name
+                $request_array["method"] = "getmininginfo";
+
+        //      Send the request to the wallet
+                $info = wallet_fetch ($request_array);
+
+        //      This function returns a string containing the calculated
+        //      network hash rate for the latest block
+                return ($info["netmhashps"]);
+        }
 
 	/**
 	* Get raw transaction data for the provided TxID value
