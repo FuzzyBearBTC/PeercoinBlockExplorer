@@ -1,5 +1,7 @@
 <?php
 
+date_default_timezone_set("UTC");
+
 /**
 * Output the site header HTML
 *
@@ -114,7 +116,8 @@ function tx_detail ($tx_id)
 	
 		detail_display ("TX Type", $txout["scriptPubKey"]["type"]);
 	
-		detail_display ("Required Sigs", $txout["scriptPubKey"]["reqSigs"]);
+                if (isset ($txout["scriptPubKey"]["reqSigs"]))
+                        detail_display ("Required Sigs", $txout["scriptPubKey"]["reqSigs"]);
 	
 		detail_display ("Script Pub Key (ASM)", $txout["scriptPubKey"]["asm"], 50);
 	

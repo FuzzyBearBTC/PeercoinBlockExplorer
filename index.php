@@ -49,13 +49,12 @@
 
 
 		$net_speed = getnetworkhashps ();
-	}
 ?>
 <div id="site_menu">
 	<p class="center"></p>
 	<center>Explore the Peercoin blockchain by looking for a Block Number (Index), Block Hash, or Transaction ID.</center>
 	<div class="menu_item">
-		<form action="<?php $_SERVER["PHP_SELF"]; ?>" method="post">
+		<form action="index.php" method="post">
 			<label for="block_height" class="menu_desc">Enter a Block Number</label><br>
 			<input class="form-control" type="text" name="block_height" id="block_height">
 			<input class="btn btn-success" type="submit" name="submit" value="Jump To Block">
@@ -63,7 +62,7 @@
 	</div>
 
 	<div class="menu_item">
-		<form action="/index.php" method="post">
+		<form action="index.php" method="post">
 			<label for="block_hash" class="menu_desc">Enter a Block Hash</label><br>
 			<input class="form-control" type="text" name="block_hash" id="block_hash">
 			<input class="btn btn-success" type="submit" name="submit" value="Jump To Block">
@@ -71,7 +70,7 @@
 	</div>
 
 	<div class="menu_item">
-		<form action="/index.php" method="post">
+		<form action="index.php" method="post">
 			<label for="transaction" class="menu_desc">Enter a Transaction ID</label><br>
 			<input class="form-control" type="text" name="transaction" id="transaction">
 			<input class="btn btn-success" type="submit" name="submit" value="Jump To TX">
@@ -100,7 +99,7 @@
 	$totalblocks = intval($network_info["blocks"]);
 
 	// POS:POW Ratio
-	$ratio1 = ratio($POS1, $POW1); 
+	$ratio1 = ratio($POS1, $POW1);
 	$ratio24 = ratio($POS24, $POW24);
 ?>
 
@@ -111,10 +110,11 @@
                 <dd>
                 <?php
                 if (intval($net_speed) < 1024) {
-                echo "".number_format($net_speed,2)." MH/s";
+                echo "".number_format($net_speed,2)." GH/s";
                 } else {
                 $net_speed = number_format(($net_speed / 1024),2);
-                echo "".$net_speed." GH/s";
+                echo "".$net_speed." TH/s";
+                }
                 ?>
                 </dd>
         </dl>
@@ -156,7 +156,7 @@
 	</dl>
 	<dl>
 		<dt>Total Blocks:</dt>
-		<dd><?php echo number_format($totalblocks, 0 , '.' , ','); ?>Blocks</dd>
+		<dd><?php echo number_format($totalblocks, 0 , '.' , ','); ?></dd>
 	</dl>
 	<dl>
 		<dt>PoS Blocks (last 1h/24h):</dt>
@@ -183,7 +183,6 @@
 
 	
 <?php
-
 	}
 
 	site_footer ();
