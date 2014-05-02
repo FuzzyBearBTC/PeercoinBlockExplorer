@@ -65,22 +65,30 @@ require_once ("src/PPC_layout.php");
 		$POScoins = 0;
 		$POWcoins = 0;
 		$POS = 0;
+                $POW = 0;
+                $avgPOScoins = 0;
+                $avgPOWcoins = 0;
 		while ($iblock != intval($currentblock))
 		{
 			$flag = block_flag($iblock);
 			$coins = block_mint($iblock);
-			if ($flag == "proof-of-stake")
+			if (strpos($flag ,"proof-of-stake") !== false)
 			{
 				$POS++;
 				$POScoins += $coins;
 			}
 			else {
+                                $POW++;
 				$POWcoins += $coins;
 			}
 			$iblock++;
 		}
-		return array($POS, $POScoins , $POWcoins);
-		
+                if ($POS > 0)
+                    $avgPOScoins = $POScoins / $POS;
+                if ($POW > 0)
+                    $avgPOWcoins = $POWcoins / $POW;
+
+                return array($POS, $POW, $POScoins, $POWcoins, $avgPOScoins, $avgPOWcoins);
 	}
 	
 	//Find the flag for a block

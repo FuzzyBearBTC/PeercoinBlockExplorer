@@ -120,7 +120,7 @@
 
         //      This function returns a string containing the calculated
         //      network hash rate for the latest block
-                return ($info["netmhashps"]);
+                return ($info["networkghps"]);
         }
 
 	/**
