@@ -208,7 +208,7 @@
 	//	If an error message was received the message is returned
 	//	to the calling code as a string.	
 		if (isset ($info["error"]) || $info["error"] != "") {
-			echo $request_array['method'].':'.$info["error"]["message"]."(Error Code: ".$info["error"]["code"].")";
+                        //echo $request_array['method'].':'.$info["error"]["message"]."(Error Code: ".$info["error"]["code"].")";
 			return $request_array['method'].':'.$info["error"]["message"]."(Error Code: ".$info["error"]["code"].")";
 		}
 		
