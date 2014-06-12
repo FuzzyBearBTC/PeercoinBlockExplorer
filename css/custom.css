@@ -1,0 +1,362 @@
+* {
+	margin:0px;
+	padding:0px;
+	font-family:sans-serif;
+	box-sizing:border-box;
+	-moz-box-sizing:border-box;
+	}
+	
+body {
+	background-color:#252527;
+	width:780px;
+	margin:0px auto;
+	}
+
+#site_head, #donor_box, #page_wrap, #stats_wrap {
+	padding:0.0em;
+	border-radius:3px;
+	box-shadow:0 3px 2px rgba(0, 0, 0, 0.25);
+	}
+
+#site_head {
+	width:768px;
+	margin:10px auto;
+	background:#ffffff;    
+	}
+	
+#donor_box {
+	width:768px;
+	margin:6px auto;
+    padding: 4px 0;
+	font-size:.8em;
+	background-color:#ffffff;
+	}
+	
+#page_wrap {
+	width:768px;
+	background-color:#ffffff;
+	margin:10px auto;
+	overflow:auto;
+	}
+	
+.coin-overview{
+	text-align: left;
+	padding:20px;
+	position: relative;
+}
+.coin-overview .logolink{
+	position: absolute;
+	top: -10px;
+	right: 0;
+}
+.coin-overview dl{
+	padding: 10px 0;
+	margin-bottom: 0;
+	border-bottom: 1px solid #D6D6D6;
+}
+.coin-overview .last{
+	border:0 none;
+}
+.coin-overview dt{
+	display: inline-block;
+	width: 340px;
+}
+.coin-overview dd{
+	display: inline-block;
+}
+
+
+#stats_wrap {
+	width:768px;
+	background-color:#ffffff;
+	margin:10px auto;
+	overflow:auto;
+	}
+	
+#node_info {
+	width:200px;
+	margin:10px;
+	background:#ffffff;
+	border:1px solid rgba(0, 0, 0, 0.2);
+	border-radius:3px;
+	box-shadow:inset 0 0 3px rgba(0, 0, 0, 0.2);
+	float:left;
+	overflow:auto;
+	}
+	
+.node_detail {
+	width:190px;
+	margin:10px auto;
+	}
+	
+.node_desc {
+	font-weight:bold;
+	color:rgba(0, 0, 0, 0.6);
+	font-size:1.1em;
+	}
+
+.node_desc_value {
+	color:rgba(32, 38, 43, 1);
+	font-size:1.2em;
+	}
+	
+.node_desc_value_price{
+	color:rgba(32, 38, 43, 1);
+	font-size:1em;
+	}
+
+#site_menu {
+	margin:10px;
+    width: auto;
+	}
+
+.menu_item {
+	margin:20px 20px;
+	}
+	
+.menu_item form {
+	text-align: left;
+	}
+	
+.menu_desc {
+	font-weight:bold;    
+	}
+
+.block_banner {
+	width:740px;
+	background-color:#3a3a3a;
+	margin:10px auto;
+	overflow:auto;
+	}
+	
+.blockbanner_left {
+	width:360px;
+	background-color:#ffffff;
+	margin:5px;
+	line-height:42px;
+	vertical-align:middle;
+	font-weight:bold;
+	float:left;
+	}
+	
+.blockbanner_right {
+	width:360px;
+	background-color:#ffffff;
+	margin:5px;
+	line-height:42px;
+	vertical-align:middle;
+	font-weight:bold;
+	float:right;
+	}
+	
+.blocknav {
+	width:740px;
+	margin:20px auto;
+	border-style:solid none;
+	clear:both;
+	overflow:auto;
+	}
+	
+.blocknav_prev {
+	width:150px;
+	margin:5px 10px;
+	float:left;
+	}
+	
+.blocknav_news {
+	width:388px;
+	margin:5px 5px;
+	float:left;
+	}
+	
+.blocknav_next {
+	width:150px;
+	margin:5px 10px;
+	float:left;
+	}
+	
+
+.blockdetail {
+	width:680px;
+	margin:5px auto 10px auto;
+	clear:both;
+	overflow:auto;
+	}
+	
+.blockdetail_detail {
+	width:210px;
+	margin:5px;
+	border-style:solid;
+	border-width:1px;
+	float:left;
+	}
+	
+.blockdetail_header {
+	width:210px;
+	background-color:#20262b;
+	color:#ffffff;
+	font-weight:bold;
+	font-family:serif;
+	}
+	
+.blockdetail_content {
+	width:210px;
+	line-height:32px;
+	vertical-align:middle;
+	}
+	
+.txlist_header {
+	width:740px;
+	background-color:#20262b
+	margin:10px auto;
+	font-weight:bold;
+	font-family:serif;
+	line-height:32px;
+	vertical-align:middle;
+	color:#ffffff;
+	}
+	
+.txlist_wrap {
+	width:740px;
+	background-color:#3a3a3a;
+	margin:10px auto;
+	overflow:auto;
+    text-align: center;
+	}
+	
+.txlist_tx {
+	width:720px;
+	background-color:#ffffff;
+	margin:10px auto;
+	font-family:mono-space;
+	line-height:32px;
+	}
+	
+.section_head {
+	width:740px;
+	background-color:#20262b;
+	margin:10px auto;
+	font-weight:bold;
+	font-family:serif;
+	line-height:32px;
+	vertical-align:middle;
+	color:#ffffff;
+	}
+	
+.section_subhead {
+	width:700px;
+	margin:10px auto;
+	border-bottom-style:solid;
+	font-weight:bold;
+	font-family:serif;
+	text-align:left;
+	line-height:32px;
+	vertical-align:middle;
+	}
+	
+.detail_display {
+	width:700px;
+	margin:5px auto;
+	border-style:solid;
+	border-width:2px;
+	font-family:sans-serif;
+	overflow:auto;
+	clear:both;
+	}
+	
+.detail_title {
+	width:130px;
+	height:100%;
+	background-color:#20262b;
+	color:#ffffff;
+	font-family:serif;
+	font-weight:bold;
+	line-height:32px;
+	vertical-align:middle;
+	float:left;
+	}
+	
+.detail_data {
+	width:565px;
+	font-family:sans-serif;
+	text-align:left;
+	line-height:32px;
+	vertical-align:middle;
+	float:right;
+	}
+
+#credits_box {
+	font-size:0.8em;
+	}
+
+#peercoin_logo {
+	margin-top:0.5em;
+	}
+
+a:hover {
+	color: #48c9b0;
+}
+a{
+	color: gray;
+}
+
+p {
+	margin:0.75em 0;
+	line-height:1.35;
+	}
+
+.left {
+	text-align:left;
+	}
+
+#donor_box a {
+	display: inline-block;
+	margin:0 0.5em;
+	text-align: center;
+}
+
+.menu_item input[type="text"] {
+	text-align:left;
+	width: 355px;
+	display: inline-block;
+}
+
+.btn-ppc {
+    border-color: #398439,
+  background-image: -webkit-gradient(
+	linear,
+	left top,
+	right bottom,
+	color-stop(0, #79DD36),
+	color-stop(1, #116800)
+);
+    background-image: -o-linear-gradient(right bottom, #79DD36 0%, #116800 100%);
+    background-image: -moz-linear-gradient(right bottom, #79DD36 0%, #116800 100%);
+    background-image: -webkit-linear-gradient(right bottom, #79DD36 0%, #116800 100%);
+    background-image: -ms-linear-gradient(right bottom, #79DD36 0%, #116800 100%);
+    background-image: linear-gradient(to right bottom, #79DD36 0%, #116800 100%);
+}
+.btn-ppc:hover,
+.btn-ppc:focus,
+.btn-ppc:active,
+.btn-ppc.active,
+.open .dropdown-toggle.btn-ppc {
+  color: #f7f2dd;
+  background-color: #47a447;
+  border-color: #398439;
+}
+.btn-ppc:active,
+.btn-ppc.active,
+.open .dropdown-toggle.btn-ppc {
+    background-image:none
+  }
+
+
+
+.no-padding {
+    padding-left: 3px
+}
+
+.error {
+    color: #FF0000;
+}

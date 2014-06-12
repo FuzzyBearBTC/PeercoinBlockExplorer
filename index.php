@@ -1,86 +1,102 @@
-﻿<?php
+<?php
 
 	require_once ("src/PPC_daemon.php");
 	require_once ("src/PPC_layout.php");
 	require_once ("src/stats_controller.php");
-	
-	
-//	If a block hash was provided the block detail is shown
-	if (isset ($_REQUEST["block_hash"]))
-	{
-		site_header ("Block Detail Page");
 		
-		block_detail ($_REQUEST["block_hash"], TRUE);
-	}
-	
-//	If a block height is provided the block detail is shown
-	elseif (isset ($_REQUEST["block_height"]))
+// define variables and set to empty values
+$inputErr = "";
+$input= "";
+
+if ($_SERVER["REQUEST_METHOD"] == "GET") {
+  if (!empty($_GET["input"])) {
+    $input = test_input($_GET["input"]);
+  }
+}
+// Trim; strip etc for input safety
+function test_input($data) {
+  $data = trim($data);
+  $data = stripslashes($data);
+  return $data;
+}
+//	Capture any input, check which search to perform
+	if (isset ($_GET["input"]))
 	{
-		site_header ("Block Detail Page");
-
-		$block_height = $_REQUEST["block_height"];
-
-		if(empty ($block_height))
+        $show_detail=true;
+        $show_error=false;
+        
+        // Block height provided
+        if (strlen($input)<=7 && (is_numeric($input) || empty($input)))
+        {              
+        $block_height = $input;
+        if(empty ($block_height))
 		{
 			$network_info = getinfo ();
 			// Default to the latest block
 			$block_height = intval($network_info["blocks"]);
-		}
-		
+		} 
+		site_header ("Block Detail Page");
+
 		block_detail ($block_height);
-	}
-	
-//	If a TXid was provided the TX Detail is shown
-	elseif (isset ($_REQUEST["transaction"]))
-	{
-		site_header ("Transaction Detail Page");
-		
-		tx_detail ($_REQUEST["transaction"]);
+        }
+        
+        // Block hash provided
+        elseif (strlen($input)==64 && is_array(getblock($_GET["input"])))
+	    {
+            $info = getblock($_GET["input"]);
+		    site_header ("Block Detail Page");
+		    $block_hash = $_GET["input"];             
+
+		    block_detail ($block_hash, TRUE);
+	    }
+        
+        //	If a TXid was provided the TX Detail is shown
+	    elseif (strlen($input)<=64 && is_array(getrawtransaction($_GET["input"])))
+	    {
+		  site_header ("Transaction Detail Page");           
+
+		  tx_detail ($_REQUEST["input"]);
+	    }
+        
+        // Incorrect input, return to index
+        else
+        {
+            //header('Location:index.php');
+             $show_detail=false;
+            $show_error=true;
+            $input_error = "not a block nor a transaction, please try again";
+        }
 	}
 	
 //	If there were no request parameters the menu is shown
-	else {
+	if (!$show_detail) {
 		site_header("Block Viewer");
-		
-		
+				
 		$network_info = getinfo ();
 		$difficulty_info = getdifficulty ();
-
-
-
 		$net_speed = getnetworkhashps ();
 ?>
 <div id="site_menu">
-	<p class="center"></p>
-	<center>Explore the Peercoin blockchain by looking for a Block Number (Index), Block Hash, or Transaction ID.</center>
-	<div class="menu_item">
-		<form action="index.php" method="post">
-			<label for="block_height" class="menu_desc">Enter a Block Number</label><br>
-			<input class="form-control" type="text" name="block_height" id="block_height">
-			<input class="btn btn-success" type="submit" name="submit" value="Jump To Block">
-		</form>
-	</div>
+	<p><center>Explore the Peercoin blockchain by looking for a Block Number (Index), Block Hash, or Transaction ID.</center></p>
+    
+    <form class="form-horizontal" role="form" action="index.php" method="get">
+    <div class="form-group col-xs-12">
+
+			<label class="sr-only" for="input" class="menu_desc">One button to rule them all</label> 
+			<div class="col-xs-10 col-xs-offset-1"><input class="form-control" type="text" name="input" id="input" placeholder="block height, block hash or transaction id"></div>
+			<div class="col-xs-1 no-padding"><input class="btn btn-ppc" type="submit" name="submit" value="Search"></div>
+        <center><span class="error"><?php echo $input_error;?></span></center>
+	</div>    
+    </form>
 
 	<div class="menu_item">
-		<form action="index.php" method="post">
-			<label for="block_hash" class="menu_desc">Enter a Block Hash</label><br>
-			<input class="form-control" type="text" name="block_hash" id="block_hash">
-			<input class="btn btn-success" type="submit" name="submit" value="Jump To Block">
-		</form>
+		<br>
+        <p class="menu_desc"><center>Find out more about Peercoin (PPC):</center></p>
+		<center><a href="http://peercoin.net" target="_blank">Visit Peercoin.net Official Peercoin Website</a></center>
+		<center><a href="http://www.peercointalk.org" target="_blank">Official Peercoin Forum</a></center>
 	</div>
+</div>
 
-	<div class="menu_item">
-		<form action="index.php" method="post">
-			<label for="transaction" class="menu_desc">Enter a Transaction ID</label><br>
-			<input class="form-control" type="text" name="transaction" id="transaction">
-			<input class="btn btn-success" type="submit" name="submit" value="Jump To TX">
-		</form>
-		<div class="menu_item">
-			<p class="menu_desc"><center>Find out more on Peercoin (PPC)</center></p>
-			<a href="http://peercoin.net" target="_blank"><center>Visit Peercoin.net Official Peercoin Website</center></a> 		</div>
-			<a href="http://www.peercointalk.org" target="_blank"><center>Official Peercoin Forum</center></a> 	
-		</div>
-	</div>
 
 <?php
 
@@ -124,7 +140,7 @@
 	</dl>
 	<dl>
 		<dt>Price:</dt>
-		<dd><span id="ticker">Loading...</span></dd>
+		<dd><span id="ticker">Loading...</span> / <span id="tickerbtc">Loading...</span></dd>
 	</dl>
 	<dl>
 		<dt>Market Capitalization:</dt>
@@ -140,19 +156,19 @@
 	</dl>
 	<dl>
 		<dt>PoS Minting Reward (last 1h/24h):</dt>
-		<dd><?php echo $POScoins1 . "/" . $POScoins24; ?></dd>
+		<dd><?php echo $POScoins1 . " / " . $POScoins24; ?></dd>
 	</dl>
 	<dl>
 		<dt>Average PoS Minting Reward (last 1h/24h):</dt>
-		<dd><?php echo round($avgPOScoins1, 2) . "/" . round($avgPOScoins24, 2); ?></dd>
+		<dd><?php echo round($avgPOScoins1, 2) . " / " . round($avgPOScoins24, 2); ?></dd>
 	</dl>
 	<dl>
 		<dt>PoW Mining Reward (last 1h/24h):</dt>
-		<dd><?php echo $POWcoins1  . "/" . $POWcoins24; ?></dd>
+		<dd><?php echo $POWcoins1  . " / " . $POWcoins24; ?></dd>
 	</dl>
 	<dl>
 		<dt>Average PoW Mining Reward (last 1h/24h):</dt>
-		<dd><?php echo round($avgPOWcoins1, 2)  . "/" . round($avgPOWcoins24, 2); ?></dd>
+		<dd><?php echo round($avgPOWcoins1, 2)  . " / " . round($avgPOWcoins24, 2); ?></dd>
 	</dl>
 	<dl>
 		<dt>Total Blocks:</dt>
@@ -160,24 +176,21 @@
 	</dl>
 	<dl>
 		<dt>PoS Blocks (last 1h/24h):</dt>
-		<dd><?php echo $POS1 . "/" . $POS24; ?></dd>
+		<dd><?php echo $POS1 . " / " . $POS24; ?></dd>
 	</dl>
 	<dl>
 		<dt>PoW Blocks (last 1h/24h):</dt>
-		<dd><?php echo $POW1  . "/" . $POW24; ?></dd>
-	</dl>
-	<dl>
-		<dt>PoS:PoW Ratio 1h/24:</dt>
-		<dd><?php echo $ratio1 . "/" . $ratio24; ?></dd>
+		<dd><?php echo $POW1  . " / " . $POW24; ?></dd>
 	</dl>
 	<dl class="last">
-		<dt>Connections:</dt>
-		<dd><?php echo $network_info["connections"]; ?></dd>
+		<dt>PoS:PoW Ratio 1h/24:</dt>
+		<dd><?php echo $ratio1 . " / " . $ratio24; ?></dd>
 	</dl>
-	
-	<p><a href="http://www.peercointalk.org" target="_blank">Brought to you by FuzzyBear and PeercoinTalk.org</a></p>
+	<p><center><a href="http://www.peercointalk.org" target="_blank">Brought to you by FuzzyBear and PeercoinTalk.org</a>
+    </center>
+    </p>
 	<div class="logolink">
-		<a href="http://peercoin.net" target="_blank"><img id="peercoin_logo" src="http://merchanttools.peercointalk.org/Logo/Logo.png" alt="Peercoin Logo" title="Peercoin Logo"></a>
+	<a href="http://peercoin.net" target="_blank"><img id="peercoin_logo" src="http://merchanttools.peercointalk.org/Logo/Logo.png" alt="Peercoin Logo" title="Peercoin Logo"></a>
 	</div>
 </div>
 

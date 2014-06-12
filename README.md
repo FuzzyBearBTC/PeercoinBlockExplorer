@@ -8,6 +8,12 @@ Version is running on http://blockexplorer.peercointalk.org/
 
 Currently search via txid does not work on this block explorer but this is due to the api call being different from bitcoin for peercoin and should hopefully be fixed soon or feel free to have a look at the code and try yourself. Just send a pull request to this repo or contact Fuzzybear on http://www.peercointalk.org/
 
+Note: Searching via txid works fine with glv2's pull request to Peerunity, which is slated to be merged into Peerunity 0.2. Until that time, an easy fix is to clone and build glv2's own branch of Peerunity where he has merged the rpc changes: https://github.com/glv2/peercoin/
+
+The Peerunity daemon is launched through ./src/peerunityd --daemon, but the daemon uses the same name "ppcoind" so no changes to the PPC_daemon.php are required. (tested on Ubuntu 14.04)
+
+
+
 
 Requirements
 ------------

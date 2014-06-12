@@ -68,7 +68,7 @@
 
 	<div class="blocknav_prev">
 		<?php if ($raw_block["previousblockhash"]) { ?>
-		<a href="?block_hash=<?php echo $raw_block["previousblockhash"]; ?>" title="View Previous Block"><- Previous Block</a>
+		<a href="?input=<?php echo $raw_block["previousblockhash"]; ?>" title="View Previous Block"><- Previous Block</a>
 		<?php } ?>
 	</div>
 
@@ -80,7 +80,7 @@
 
 	<div class="blocknav_next">
 		<?php if ($raw_block["nextblockhash"]) { ?>
-		<a href="<?php echo $_SERVER["PHP_SELF"] . "?block_hash=" . $raw_block["nextblockhash"]; ?>" title="View Next Block">Next Block -></a>
+		<a href="<?php echo $_SERVER["PHP_SELF"] . "?input=" . $raw_block["nextblockhash"]; ?>" title="View Next Block">Next Block -></a>
 		<?php } ?>
 	</div>
 
@@ -98,7 +98,7 @@
 <?php foreach ($raw_block["tx"] as $index => $tx): ?>
 
 	<div class="txlist_tx" >
-		<a href="?transaction=<?php echo $tx; ?>" title="Transaction Details">
+		<a href="?input=<?php echo $tx; ?>" title="Transaction Details">
 			<?php echo $tx; ?>
 		</a>
 	</div>

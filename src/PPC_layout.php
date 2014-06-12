@@ -132,12 +132,12 @@ function tx_detail ($tx_id)
 		}
 		
 		}
-	
+	/* Commented as all the raw info is already presented above
 	section_head ("Raw Transaction Detail");
 	
 	echo "	<textarea name=\"rawtrans\" rows=\"25\" cols=\"80\" style=\"text-align:left;\">\n";
 	print_r ($raw_tx);
-	echo "	\n</textarea><br><br>\n";
+	echo "	\n</textarea><br><br>\n";*/
 }
 
 
@@ -183,7 +183,7 @@ function blockheight_link ($block_height)
 */
 function blockhash_link ($block_hash)
 {
-	return "<a href=\"".$_SERVER["PHP_SELF"]."?block_hash=".$block_hash."\" title=\"View Block Details\">".$block_hash."</a>\n";
+	return "<a href=\"".$_SERVER["PHP_SELF"]."?input=".$block_hash."\" title=\"View Block Details\">".$block_hash."</a>\n";
 }
 
 

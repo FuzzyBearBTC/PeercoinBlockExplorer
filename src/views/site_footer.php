@@ -2,13 +2,13 @@
 	</div>
 
 	<div id="donor_box">
-
+        <center>
 		<a href="http://donate.peercointalk.org" target="_blank">Donate to Peercointalk projects</a>
 		<a href="http://peer4commit.com/projects/4" target="_blank">
 			<img src="http://peer4commit.com/projects/4.svg">
 		</a>
 		<a href="https://github.com/FuzzyBearBTC/PeercoinBlockExplorer" target="_blank">GitHub Source Code </a>
-
+        </center>
 		<script>
 			// Google Analytics code
 			(function (i, s, o, g, r, a, m) {
