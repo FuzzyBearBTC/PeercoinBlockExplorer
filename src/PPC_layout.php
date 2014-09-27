@@ -44,7 +44,13 @@ function block_detail($block_id, $hash=FALSE)
 		$raw_block = getblock($block_hash);
 	}
 
-	include('views/block_detail.php');
+        if (isset($raw_block["hash"]))
+            include('views/block_detail.php');
+        else
+        {
+            section_head("Error");
+            section_subhead("This block is not in the blockchain");
+        }
 }
 
 
@@ -56,6 +62,13 @@ function block_detail($block_id, $hash=FALSE)
 function tx_detail ($tx_id)
 {
 	$raw_tx = getrawtransaction ($tx_id);
+
+        if (!isset($raw_tx["txid"]))
+        {
+            section_head("Error");
+            section_subhead("This transaction is not in the blockchain");
+            return;
+        }
 
 	section_head ("Transaction: ".$raw_tx["txid"]);
 	
