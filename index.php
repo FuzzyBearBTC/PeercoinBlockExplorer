@@ -8,7 +8,7 @@
 //	If a block hash was provided the block detail is shown
 	if (isset ($_REQUEST["block_hash"]))
 	{
-		site_header ("Block Detail Page");
+		site_header ("Peercoin Block Detail Page");
 		
 		block_detail ($_REQUEST["block_hash"], TRUE);
 	}
@@ -16,7 +16,7 @@
 //	If a block height is provided the block detail is shown
 	elseif (isset ($_REQUEST["block_height"]))
 	{
-		site_header ("Block Detail Page");
+		site_header ("Peercoin Block Detail Page");
 
 		$block_height = $_REQUEST["block_height"];
 
@@ -33,14 +33,14 @@
 //	If a TXid was provided the TX Detail is shown
 	elseif (isset ($_REQUEST["transaction"]))
 	{
-		site_header ("Transaction Detail Page");
+		site_header ("Peercoin Transaction Detail Page");
 		
 		tx_detail ($_REQUEST["transaction"]);
 	}
 	
 //	If there were no request parameters the menu is shown
 	else {
-		site_header("Block Viewer");
+		site_header("Peercoin Block Viewer");
 		
 		
 		$network_info = getinfo ();
