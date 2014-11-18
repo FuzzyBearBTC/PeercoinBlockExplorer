@@ -23,7 +23,7 @@ function test_input($data) {
 //	Capture any input, check which search to perform
 	if (isset ($_GET["input"]))
 	{
-		site_header ("Peercoin Block Detail Page");
+		//site_header ("Peercoin Block Detail Page");
         $show_error=false;
         
         // Block height provided
@@ -36,7 +36,7 @@ function test_input($data) {
 			// Default to the latest block
 			$block_height = intval($network_info["blocks"]);
 		} 
-		site_header ("Block Detail Page");
+		//site_header ("Block Detail Page");
 
 		block_detail ($block_height);
         }
@@ -45,7 +45,7 @@ function test_input($data) {
         elseif (strlen($input)==64 && is_array(getblock($_GET["input"])))
 	    {
             $info = getblock($_GET["input"]);
-		    site_header ("Block Detail Page");
+		 //   site_header ("Block Detail Page");
 		    $block_hash = $_GET["input"];             
 
 		    block_detail ($block_hash, TRUE);
@@ -54,7 +54,7 @@ function test_input($data) {
         //	If a TXid was provided the TX Detail is shown
 	    elseif (strlen($input)<=64 && is_array(getrawtransaction($_GET["input"])))
 	    {
-		site_header ("Peercoin Transaction Detail Page");
+		//site_header ("Peercoin Transaction Detail Page");
 
 		  tx_detail ($_REQUEST["input"]);
 	    }
