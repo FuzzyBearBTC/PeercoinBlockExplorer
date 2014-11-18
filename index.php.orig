@@ -3,6 +3,15 @@
 	require_once ("src/PPC_daemon.php");
 	require_once ("src/PPC_layout.php");
 	require_once ("src/stats_controller.php");
+<<<<<<< HEAD
+	
+	
+//	If a block hash was provided the block detail is shown
+	if (isset ($_REQUEST["block_hash"]))
+	{
+		site_header ("Peercoin Block Detail Page");
+=======
+>>>>>>> pr/52
 		
 // define variables and set to empty values
 $inputErr = "";
@@ -11,7 +20,6 @@ $input= "";
 if ($_SERVER["REQUEST_METHOD"] == "GET") {
   if (!empty($_GET["input"])) {
     $input = test_input($_GET["input"]);
-		site_header ("Peercoin Block Detail Page");
   }
 }
 // Trim; strip etc for input safety
@@ -23,7 +31,14 @@ function test_input($data) {
 //	Capture any input, check which search to perform
 	if (isset ($_GET["input"]))
 	{
+<<<<<<< HEAD
 		site_header ("Peercoin Block Detail Page");
+
+		$block_height = $_REQUEST["block_height"];
+
+		if(empty ($block_height))
+=======
+        $show_detail=true;
         $show_error=false;
         
         // Block height provided
@@ -31,6 +46,7 @@ function test_input($data) {
         {              
         $block_height = $input;
         if(empty ($block_height))
+>>>>>>> pr/52
 		{
 			$network_info = getinfo ();
 			// Default to the latest block
@@ -39,6 +55,23 @@ function test_input($data) {
 		site_header ("Block Detail Page");
 
 		block_detail ($block_height);
+<<<<<<< HEAD
+	}
+	
+//	If a TXid was provided the TX Detail is shown
+	elseif (isset ($_REQUEST["transaction"]))
+	{
+		site_header ("Peercoin Transaction Detail Page");
+		
+		tx_detail ($_REQUEST["transaction"]);
+	}
+	
+//	If there were no request parameters the menu is shown
+	else {
+		site_header("Peercoin Block Viewer");
+		
+		
+=======
         }
         
         // Block hash provided
@@ -54,7 +87,7 @@ function test_input($data) {
         //	If a TXid was provided the TX Detail is shown
 	    elseif (strlen($input)<=64 && is_array(getrawtransaction($_GET["input"])))
 	    {
-		site_header ("Peercoin Transaction Detail Page");
+		  site_header ("Transaction Detail Page");           
 
 		  tx_detail ($_REQUEST["input"]);
 	    }
@@ -71,8 +104,9 @@ function test_input($data) {
 	
 //	If there were no request parameters the menu is shown
 	if (!$show_detail) {
-		site_header("Peercoin Block Viewer");
+		site_header("Block Viewer");
 				
+>>>>>>> pr/52
 		$network_info = getinfo ();
 		$difficulty_info = getdifficulty ();
 		$net_speed = getnetworkhashps ();
